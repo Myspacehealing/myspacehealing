@@ -3,34 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MySpace Healing | Patient Intake &amp; Consent Form</title>
-  <meta name="description" content="New patient intake and consent form for MySpace Healing." />
+  <title>Patient Intake Form | MySpace Healing</title>
+  <meta name="description" content="Complete your new patient intake and consent form before your first acupuncture visit with Eva Huang." />
+  <link rel="canonical" href="https://myspacehealing.com/intake.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Patient Intake Form — MySpace Healing" />
+  <meta property="og:description" content="Complete your new patient intake and consent form before your first acupuncture visit with Eva Huang." />
+  <meta property="og:url" content="https://myspacehealing.com/intake.html" />
+  <meta property="og:site_name" content="MySpace Healing" />
+  <meta property="og:image" content="https://myspacehealing.com/images/logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Patient Intake Form — MySpace Healing" />
+  <meta name="twitter:description" content="Complete your new patient intake and consent form before your first acupuncture visit with Eva Huang." />
+  <meta name="twitter:image" content="https://myspacehealing.com/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="icon" type="image/png" href="images/icon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <div class="container nav">
       <a href="index.html" class="brand">
-        <img src="images/logo.png" alt="MySpace Healing logo" />
-        <span>
-          <div class="brand-name">MySpace Healing</div>
+        <img src="images/logo.png" alt="MySpace Healing logo" class="brand-orb" />
+        <span class="brand-text">
+          <span class="brand-wordmark">
+            <span class="brand-script">MySpace</span>
+            <span class="brand-healing">Healing</span>
+          </span>
           <div class="brand-sub">(Eva) Ching Po Huang, L.Ac.</div>
         </span>
       </a>
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <svg class="hamburger-icon" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="close-icon" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+      </button>
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="acupuncture.html">What Is Acupuncture?</a>
-        <a href="faq.html">Pricing &amp; Policies</a>
+        <a href="pricing.html">Pricing &amp; Policies</a>
         <a href="contact.html">Contact</a>
         <a href="intake.html" style="font-weight:600;">Intake</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main class="page-transition">
     <section class="hero-simple">
       <div class="container">
         <div class="banner">
@@ -97,7 +118,7 @@
       <div class="container card">
         <h2>Health History</h2>
         <p class="note" style="margin-bottom:1rem">Please check any conditions you currently have or have experienced in the past.</p>
-        <div class="grid-2">
+        <div data-aos="fade-up" class="grid-2">
           <div>
             <h3>Respiratory</h3>
             <div class="checkbox-list note" id="hh-respiratory">
@@ -334,6 +355,7 @@
     <div class="container">
       <div>&copy; <span id="year"></span> MySpace Healing &middot; (Eva) Ching Po Huang, L.Ac.</div>
       <div class="note">Private concierge acupuncture services separate from Yupo Health / Yupo Wellness.</div>
+      <button class="view-toggle">View desktop site</button>
     </div>
   </footer>
 
@@ -449,5 +471,8 @@
       window.location.href = mailto;
     }
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>AOS.init({duration:700,once:true,offset:60});</script>
+  <script src="mobile.js"></script>
 </body>
 </html>

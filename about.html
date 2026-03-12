@@ -3,34 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MySpace Healing | About Eva</title>
-  <meta name="description" content="About (Eva) Ching Po Huang, licensed acupuncturist." />
+  <title>About Eva | MySpace Healing</title>
+  <meta name="description" content="(Eva) Ching Po Huang is a NYS licensed acupuncturist with 13+ years of experience. Learn about her journey from Pacific College to founding MySpace Healing." />
+  <link rel="canonical" href="https://myspacehealing.com/about.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About (Eva) Ching Po Huang, L.Ac." />
+  <meta property="og:description" content="(Eva) Ching Po Huang is a NYS licensed acupuncturist with 13+ years of experience. Learn about her journey from Pacific College to founding MySpace Healing." />
+  <meta property="og:url" content="https://myspacehealing.com/about.html" />
+  <meta property="og:site_name" content="MySpace Healing" />
+  <meta property="og:image" content="https://myspacehealing.com/images/logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="About (Eva) Ching Po Huang, L.Ac." />
+  <meta name="twitter:description" content="(Eva) Ching Po Huang is a NYS licensed acupuncturist with 13+ years of experience. Learn about her journey from Pacific College to founding MySpace Healing." />
+  <meta name="twitter:image" content="https://myspacehealing.com/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="icon" type="image/png" href="images/icon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <div class="container nav">
       <a href="index.html" class="brand">
-        <img src="images/logo.png" alt="MySpace Healing logo" />
-        <span>
-          <div class="brand-name">MySpace Healing</div>
+        <img src="images/logo.png" alt="MySpace Healing logo" class="brand-orb" />
+        <span class="brand-text">
+          <span class="brand-wordmark">
+            <span class="brand-script">MySpace</span>
+            <span class="brand-healing">Healing</span>
+          </span>
           <div class="brand-sub">(Eva) Ching Po Huang, L.Ac.</div>
         </span>
       </a>
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <svg class="hamburger-icon" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="close-icon" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+      </button>
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html" style="font-weight:600;">About</a>
         <a href="services.html">Services</a>
         <a href="acupuncture.html">What Is Acupuncture?</a>
-        <a href="faq.html">Pricing &amp; Policies</a>
+        <a href="pricing.html">Pricing &amp; Policies</a>
         <a href="contact.html">Contact</a>
         <a href="intake.html">Intake</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main class="page-transition">
     <section class="hero-simple">
       <div class="container">
         <div class="banner">
@@ -60,7 +81,7 @@
 
     <section>
       <div class="container grid-2">
-        <div class="card">
+        <div data-aos="fade-up" class="card">
           <h2>Philosophy of care</h2>
           <p>
             Eva approaches each patient with sincerity, respect, and a strong sense of purpose. She sees every person who comes to her as someone placed in her path for a reason, and she considers it part of her mission to help them with the greatest care, skill, and heart that she can give.
@@ -69,7 +90,7 @@
             Over the years, Eva has helped many patients regain their health, avoid surgeries, restore balance, improve quality of life, and conceive long-awaited babies. Many of her patients continue to return to her because they trust not only her knowledge and skill, but also the way she treats them &mdash; with decency, warmth, love, and genuine care.
           </p>
         </div>
-        <div class="card soft">
+        <div data-aos="fade-up" class="card soft">
           <h2>The birth of MySpace Healing</h2>
           <p>
             Some time ago, Eva began to feel a strong inner calling that there were people beyond the clinic who needed her help. She listened to that voice, and from that calling, MySpace Healing was born &mdash; a more personal offering that allows her to bring healing directly to those who need it, in the comfort of their own space.
@@ -83,7 +104,7 @@
 
     <section>
       <div class="container grid-2">
-        <div class="card soft">
+        <div data-aos="fade-up" class="card soft">
           <h3>Why home visits matter</h3>
           <ul class="list">
             <li>Greater privacy and comfort</li>
@@ -93,7 +114,7 @@
             <li>A quieter, more personalized treatment environment</li>
           </ul>
         </div>
-        <div class="card soft">
+        <div data-aos="fade-up" class="card soft">
           <h3>Areas served</h3>
           <p>
             Home visits are primarily available throughout New York City. Travel to New Jersey, Connecticut, upstate New York, or other locations may be arranged depending on scheduling availability and travel considerations.
@@ -107,11 +128,15 @@
     <div class="container">
       <div>&copy; <span id="year"></span> MySpace Healing &middot; (Eva) Ching Po Huang, L.Ac.</div>
       <div class="note">Private concierge acupuncture services separate from Yupo Health / Yupo Wellness.</div>
+      <button class="view-toggle">View desktop site</button>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>AOS.init({duration:700,once:true,offset:60});</script>
+  <script src="mobile.js"></script>
 </body>
 </html>
