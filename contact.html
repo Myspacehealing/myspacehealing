@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Space Healing | Contact</title>
+  <meta name="description" content="Contact Eva Huang for private acupuncture services." />
+  <link rel="icon" type="image/png" href="images/icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="My Space Healing logo" />
+        <span>
+          <div class="brand-name">My Space Healing</div>
+          <div class="brand-sub">Eva Huang, L.Ac.</div>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="acupuncture.html">What Is Acupuncture?</a>
+        <a href="faq.html">FAQ &amp; Policies</a>
+        <a href="contact.html" style="font-weight:600;">Contact</a>
+        <a href="intake.html">Intake</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-simple">
+      <div class="container">
+        <div class="banner">
+          <span class="eyebrow">Contact</span>
+          <h1>Reach out directly.</h1>
+          <p class="lead">
+            To inquire about private acupuncture services, gift sessions, two-person visits, or travel arrangements, please fill out the form below or email Eva directly at <a href="mailto:eva@myspacehealing.com">eva@myspacehealing.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-2">
+        <div class="card">
+          <h2>Send a message</h2>
+          <form id="contactForm" onsubmit="return sendContact()">
+            <div class="field" style="margin-bottom:1rem">
+              <label for="c-name">Your name</label>
+              <input type="text" id="c-name" name="name" required
+                     style="width:100%;border:none;outline:none;font-family:inherit;font-size:1rem;color:var(--text);background:transparent" />
+            </div>
+            <div class="field" style="margin-bottom:1rem">
+              <label for="c-email">Your email</label>
+              <input type="email" id="c-email" name="email" required
+                     style="width:100%;border:none;outline:none;font-family:inherit;font-size:1rem;color:var(--text);background:transparent" />
+            </div>
+            <div class="field" style="margin-bottom:1rem">
+              <label for="c-phone">Phone number (optional)</label>
+              <input type="tel" id="c-phone" name="phone"
+                     style="width:100%;border:none;outline:none;font-family:inherit;font-size:1rem;color:var(--text);background:transparent" />
+            </div>
+            <div class="field" style="margin-bottom:1rem">
+              <label for="c-interest">What are you interested in?</label>
+              <select id="c-interest" name="interest"
+                      style="width:100%;border:none;outline:none;font-family:inherit;font-size:1rem;color:var(--text);background:transparent">
+                <option value="">Select one...</option>
+                <option value="In-home acupuncture">In-home acupuncture</option>
+                <option value="Gift session for someone">Gift session for someone</option>
+                <option value="Two-person visit">Two-person visit</option>
+                <option value="General inquiry">General inquiry</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field" style="margin-bottom:1.4rem">
+              <label for="c-message">Message</label>
+              <textarea id="c-message" name="message" rows="4"
+                        style="width:100%;border:none;outline:none;font-family:inherit;font-size:1rem;color:var(--text);background:transparent;resize:vertical"></textarea>
+            </div>
+            <button type="submit" class="btn primary" style="cursor:pointer;font-family:inherit">
+              Send message
+            </button>
+          </form>
+        </div>
+
+        <div>
+          <div class="card" style="margin-bottom:1.4rem">
+            <h3>In-home acupuncture</h3>
+            <p>Private sessions beginning at $250, with pricing adjusted based on travel distance and visit needs.</p>
+          </div>
+          <div class="card" style="margin-bottom:1.4rem">
+            <h3>Gift sessions</h3>
+            <p>Friends and family can help sponsor care for loved ones who are in pain, recovering, postpartum, or not easily mobile.</p>
+          </div>
+          <div class="card">
+            <h3>Two-person visits</h3>
+            <p>Ask about special pricing when two people receive treatment during the same visit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>&copy; <span id="year"></span> My Space Healing &middot; Eva Huang, L.Ac.</div>
+      <div class="note">Private concierge acupuncture services separate from Yupo Health / Yupo Wellness.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function sendContact() {
+      var name = document.getElementById('c-name').value.trim();
+      var email = document.getElementById('c-email').value.trim();
+      var phone = document.getElementById('c-phone').value.trim();
+      var interest = document.getElementById('c-interest').value;
+      var message = document.getElementById('c-message').value.trim();
+
+      var body = 'Name: ' + name + '\n';
+      body += 'Email: ' + email + '\n';
+      if (phone) body += 'Phone: ' + phone + '\n';
+      if (interest) body += 'Interested in: ' + interest + '\n';
+      body += '\n' + message;
+
+      var subject = 'New inquiry from ' + name;
+      var mailto = 'mailto:eva@myspacehealing.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailto;
+      return false;
+    }
+  </script>
+</body>
+</html>

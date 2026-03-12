@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Space Healing | Intake Form</title>
+  <meta name="description" content="New patient intake form for My Space Healing." />
+  <link rel="icon" type="image/png" href="images/icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="My Space Healing logo" />
+        <span>
+          <div class="brand-name">My Space Healing</div>
+          <div class="brand-sub">Eva Huang, L.Ac.</div>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="acupuncture.html">What Is Acupuncture?</a>
+        <a href="faq.html">FAQ &amp; Policies</a>
+        <a href="contact.html">Contact</a>
+        <a href="intake.html" style="font-weight:600;">Intake</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-simple">
+      <div class="container">
+        <div class="banner">
+          <span class="eyebrow">New Patient Intake</span>
+          <h1>Please complete before your first visit.</h1>
+          <p class="lead">
+            Fill out this form on-screen and email it directly to Eva, or print a copy to bring to your appointment. Your information is not stored online and is sent only to Eva's email.
+          </p>
+          <div class="actions no-print">
+            <button type="button" class="btn primary" onclick="emailIntake()" style="cursor:pointer;font-family:inherit">
+              Email completed form to Eva
+            </button>
+            <button type="button" class="btn secondary" onclick="window.print()" style="cursor:pointer;font-family:inherit">
+              Print this form
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container card">
+        <h2>Patient Information</h2>
+        <div class="form-grid">
+          <div class="field">
+            <label for="i-name">Full Name</label>
+            <input type="text" id="i-name" class="intake-input" />
+          </div>
+          <div class="field">
+            <label for="i-dob">Date of Birth</label>
+            <input type="text" id="i-dob" class="intake-input" placeholder="MM/DD/YYYY" />
+          </div>
+          <div class="field">
+            <label for="i-phone">Phone Number</label>
+            <input type="tel" id="i-phone" class="intake-input" />
+          </div>
+          <div class="field">
+            <label for="i-email">Email Address</label>
+            <input type="email" id="i-email" class="intake-input" />
+          </div>
+          <div class="field" style="grid-column:1/-1">
+            <label for="i-address">Home Address</label>
+            <input type="text" id="i-address" class="intake-input" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-2">
+        <div class="card">
+          <h3>Main Reason for Visit</h3>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-concern">Primary concern</label>
+            <textarea id="i-concern" class="intake-input" rows="2"></textarea>
+          </div>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-duration">How long has this been going on?</label>
+            <input type="text" id="i-duration" class="intake-input" />
+          </div>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-pain">Pain level or severity (1-10)</label>
+            <input type="text" id="i-pain" class="intake-input" />
+          </div>
+          <div class="field">
+            <label for="i-factors">What makes it better or worse?</label>
+            <textarea id="i-factors" class="intake-input" rows="2"></textarea>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Health History</h3>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-conditions">Medical conditions</label>
+            <textarea id="i-conditions" class="intake-input" rows="2"></textarea>
+          </div>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-meds">Medications or supplements</label>
+            <textarea id="i-meds" class="intake-input" rows="2"></textarea>
+          </div>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-allergies">Allergies</label>
+            <input type="text" id="i-allergies" class="intake-input" />
+          </div>
+          <div class="field">
+            <label for="i-pregnancy">Pregnancy / postpartum status (if applicable)</label>
+            <input type="text" id="i-pregnancy" class="intake-input" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-2">
+        <div class="card">
+          <h3>Wellness Snapshot</h3>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-sleep">Sleep quality</label>
+            <select id="i-sleep" class="intake-input">
+              <option value="">Select...</option>
+              <option value="Good">Good</option>
+              <option value="Fair">Fair</option>
+              <option value="Poor">Poor</option>
+              <option value="Very poor / insomnia">Very poor / insomnia</option>
+            </select>
+          </div>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-energy">Energy level</label>
+            <select id="i-energy" class="intake-input">
+              <option value="">Select...</option>
+              <option value="Good">Good</option>
+              <option value="Fair">Fair</option>
+              <option value="Low">Low</option>
+              <option value="Very low / fatigued">Very low / fatigued</option>
+            </select>
+          </div>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-digestion">Digestion</label>
+            <select id="i-digestion" class="intake-input">
+              <option value="">Select...</option>
+              <option value="Normal">Normal</option>
+              <option value="Some issues">Some issues</option>
+              <option value="Frequent problems">Frequent problems</option>
+            </select>
+          </div>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-stress">Stress level</label>
+            <select id="i-stress" class="intake-input">
+              <option value="">Select...</option>
+              <option value="Low">Low</option>
+              <option value="Moderate">Moderate</option>
+              <option value="High">High</option>
+              <option value="Very high">Very high</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="i-hormonal">Menstrual / hormonal concerns (if applicable)</label>
+            <textarea id="i-hormonal" class="intake-input" rows="2"></textarea>
+          </div>
+        </div>
+        <div class="card soft">
+          <h3>Consent &amp; Policies</h3>
+          <p class="note">
+            I understand that acupuncture and related therapies will be provided by a licensed acupuncturist. I understand that new patients may be asked to prepay to reserve their appointment, and that 24 hours notice is requested for cancellation or rescheduling.
+          </p>
+          <div style="margin:1.2rem 0">
+            <label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.95rem;color:var(--text)">
+              <input type="checkbox" id="i-consent" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" />
+              I have read and agree to the above policies
+            </label>
+          </div>
+          <div class="field" style="margin-bottom:1rem">
+            <label for="i-sig">Full name (as signature)</label>
+            <input type="text" id="i-sig" class="intake-input" />
+          </div>
+          <div class="field">
+            <label for="i-date">Date</label>
+            <input type="date" id="i-date" class="intake-input" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="no-print">
+      <div class="container" style="text-align:center">
+        <div class="actions" style="justify-content:center">
+          <button type="button" class="btn primary" onclick="emailIntake()" style="cursor:pointer;font-family:inherit">
+            Email completed form to Eva
+          </button>
+          <button type="button" class="btn secondary" onclick="window.print()" style="cursor:pointer;font-family:inherit">
+            Print this form
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>&copy; <span id="year"></span> My Space Healing &middot; Eva Huang, L.Ac.</div>
+      <div class="note">Private concierge acupuncture services separate from Yupo Health / Yupo Wellness.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Pre-fill today's date
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById('i-date').value = today;
+
+    function getVal(id) {
+      var el = document.getElementById(id);
+      if (!el) return '';
+      if (el.type === 'checkbox') return el.checked ? 'Yes' : 'No';
+      return (el.value || '').trim();
+    }
+
+    function emailIntake() {
+      var name = getVal('i-name');
+      if (!name) {
+        alert('Please enter your full name before sending.');
+        document.getElementById('i-name').focus();
+        return;
+      }
+
+      var lines = [];
+      lines.push('NEW PATIENT INTAKE FORM');
+      lines.push('========================');
+      lines.push('');
+      lines.push('PATIENT INFORMATION');
+      lines.push('Full Name: ' + name);
+      lines.push('Date of Birth: ' + getVal('i-dob'));
+      lines.push('Phone: ' + getVal('i-phone'));
+      lines.push('Email: ' + getVal('i-email'));
+      lines.push('Address: ' + getVal('i-address'));
+      lines.push('');
+      lines.push('MAIN REASON FOR VISIT');
+      lines.push('Primary Concern: ' + getVal('i-concern'));
+      lines.push('Duration: ' + getVal('i-duration'));
+      lines.push('Pain Level: ' + getVal('i-pain'));
+      lines.push('Better/Worse Factors: ' + getVal('i-factors'));
+      lines.push('');
+      lines.push('HEALTH HISTORY');
+      lines.push('Medical Conditions: ' + getVal('i-conditions'));
+      lines.push('Medications/Supplements: ' + getVal('i-meds'));
+      lines.push('Allergies: ' + getVal('i-allergies'));
+      lines.push('Pregnancy/Postpartum: ' + getVal('i-pregnancy'));
+      lines.push('');
+      lines.push('WELLNESS SNAPSHOT');
+      lines.push('Sleep Quality: ' + getVal('i-sleep'));
+      lines.push('Energy Level: ' + getVal('i-energy'));
+      lines.push('Digestion: ' + getVal('i-digestion'));
+      lines.push('Stress Level: ' + getVal('i-stress'));
+      lines.push('Hormonal Concerns: ' + getVal('i-hormonal'));
+      lines.push('');
+      lines.push('CONSENT');
+      lines.push('Agreed to Policies: ' + getVal('i-consent'));
+      lines.push('Signature: ' + getVal('i-sig'));
+      lines.push('Date: ' + getVal('i-date'));
+
+      var subject = 'New Patient Intake - ' + name;
+      var body = lines.join('\n');
+
+      var mailto = 'mailto:eva@myspacehealing.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailto;
+    }
+  </script>
+</body>
+</html>

@@ -1,74 +1,105 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>MySpace Healing</title>
-
-<style>
-
-body{
-font-family: Arial;
-margin:0;
-background:#f5f5f5;
-text-align:center;
-}
-
-.hero{
-padding:150px 20px;
-background:linear-gradient(#c06ca5,#8a4a83);
-color:white;
-}
-
-h1{
-font-size:60px;
-margin-bottom:10px;
-}
-
-h2{
-font-weight:300;
-}
-
-.section{
-padding:60px 20px;
-max-width:800px;
-margin:auto;
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Space Healing | Home</title>
+  <meta name="description" content="Private concierge acupuncture with Eva Huang in New York City." />
+  <link rel="icon" type="image/png" href="images/icon.png" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="My Space Healing logo" />
+        <span>
+          <div class="brand-name">My Space Healing</div>
+          <div class="brand-sub">Eva Huang, L.Ac.</div>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" style="font-weight:600;">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="acupuncture.html">What Is Acupuncture?</a>
+        <a href="faq.html">FAQ &amp; Policies</a>
+        <a href="contact.html">Contact</a>
+        <a href="intake.html">Intake</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="hero">
+  <main>
+    <section class="page-hero">
+      <div class="container hero-wrap">
+        <div>
+          <span class="eyebrow">Private Concierge Acupuncture</span>
+          <h1>Healing, balance, and personalized care in the comfort of your home.</h1>
+          <p class="lead">
+            My Space Healing offers private in-home acupuncture and holistic care with Eva Huang, a New York State licensed acupuncturist and certified herbologist with over 13 years of clinical experience.
+          </p>
+          <p class="lead">
+            Care is designed to reduce pain, calm the nervous system, support fertility and hormonal balance, and create space for deeper healing in a quiet, personalized setting.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="contact.html">Contact Eva</a>
+            <a class="btn secondary" href="acupuncture.html">Learn About Acupuncture</a>
+          </div>
+        </div>
 
-<h1>MySpace Healing</h1>
-<h2>Private Acupuncture & Holistic Care</h2>
+        <div class="hero-image">
+          <div class="hero-overlay">
+            <img class="hero-logo" src="images/logo.png" alt="My Space Healing logo" />
+            <div class="note">
+              Home visits are especially helpful for people in pain, postpartum mothers, busy professionals, those recovering from injury, and clients who prefer a calm and private healing experience.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <section>
+      <div class="container">
+        <div class="grid-3">
+          <div class="card">
+            <h3>Private in-home care</h3>
+            <p>One-on-one acupuncture sessions in your own home, designed for comfort, privacy, and individualized care.</p>
+          </div>
+          <div class="card">
+            <h3>Thoughtful, holistic treatment</h3>
+            <p>Treatment may include acupuncture, herbal consultation, cupping, gua sha, trigger point work, soft tissue techniques, and lifestyle guidance.</p>
+          </div>
+          <div class="card">
+            <h3>Meaningful support for loved ones</h3>
+            <p>Gift sessions can be arranged for family members or friends who are in pain, recovering, overwhelmed, or not easily mobile.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="section">
+    <section>
+      <div class="container banner">
+        <span class="badge alt">Popular Reasons Patients Reach Out</span>
+        <div class="grid-4">
+          <div><strong>Pain management</strong><br><span class="note">Neck, back, shoulder, joint, soft tissue, and chronic pain support</span></div>
+          <div><strong>Fertility &amp; IVF</strong><br><span class="note">Infertility support, cycle regulation, and IVF preparation support</span></div>
+          <div><strong>Anxiety &amp; sleep</strong><br><span class="note">Support for stress, nervous system imbalance, insomnia, and exhaustion</span></div>
+          <div><strong>Hormonal balance</strong><br><span class="note">Menstrual concerns, menopause support, postpartum care, and cycle-related symptoms</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<h2>About</h2>
+  <footer class="footer">
+    <div class="container">
+      <div>&copy; <span id="year"></span> My Space Healing &middot; Eva Huang, L.Ac.</div>
+      <div class="note">Private concierge acupuncture services separate from Yupo Health / Yupo Wellness.</div>
+    </div>
+  </footer>
 
-<p>
-MySpace Healing provides private acupuncture and holistic treatments designed to support the body's natural healing process.
-</p>
-
-<p>
-Services include personalized in-home acupuncture treatments for individuals seeking comfortable, private, and deeply restorative care.
-</p>
-
-</div>
-
-<div class="section">
-
-<h2>Contact</h2>
-
-<p>Email: eva@myspacehealing.com</p>
-
-</div>
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-
 </html>
