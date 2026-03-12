@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Space Healing | Intake Form</title>
-  <meta name="description" content="New patient intake form for My Space Healing." />
+  <title>MySpace Healing | Patient Intake &amp; Consent Form</title>
+  <meta name="description" content="New patient intake and consent form for MySpace Healing." />
   <link rel="icon" type="image/png" href="images/icon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -12,10 +12,10 @@
   <header>
     <div class="container nav">
       <a href="index.html" class="brand">
-        <img src="images/logo.png" alt="My Space Healing logo" />
+        <img src="images/logo.png" alt="MySpace Healing logo" />
         <span>
-          <div class="brand-name">My Space Healing</div>
-          <div class="brand-sub">Eva Huang, L.Ac.</div>
+          <div class="brand-name">MySpace Healing</div>
+          <div class="brand-sub">(Eva) Ching Po Huang, L.Ac.</div>
         </span>
       </a>
       <nav class="nav-links">
@@ -23,7 +23,7 @@
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="acupuncture.html">What Is Acupuncture?</a>
-        <a href="faq.html">FAQ &amp; Policies</a>
+        <a href="faq.html">Pricing &amp; Policies</a>
         <a href="contact.html">Contact</a>
         <a href="intake.html" style="font-weight:600;">Intake</a>
       </nav>
@@ -34,10 +34,10 @@
     <section class="hero-simple">
       <div class="container">
         <div class="banner">
-          <span class="eyebrow">New Patient Intake</span>
-          <h1>Please complete before your first visit.</h1>
+          <span class="eyebrow">Patient Intake &amp; Consent Form</span>
+          <h1>MySpace Healing &mdash; (Eva) Ching Po Huang, L.Ac.</h1>
           <p class="lead">
-            Fill out this form on-screen and email it directly to Eva, or print a copy to bring to your appointment. Your information is not stored online and is sent only to Eva's email.
+            Please complete this form before your first visit. Fill it out on-screen and email it directly to Eva, or print a copy to bring to your appointment. Your information is not stored online and is sent only to Eva's email.
           </p>
           <div class="actions no-print">
             <button type="button" class="btn primary" onclick="emailIntake()" style="cursor:pointer;font-family:inherit">
@@ -51,148 +51,271 @@
       </div>
     </section>
 
+    <!-- Personal Information -->
     <section>
       <div class="container card">
-        <h2>Patient Information</h2>
+        <h2>Personal Information</h2>
         <div class="form-grid">
-          <div class="field">
-            <label for="i-name">Full Name</label>
-            <input type="text" id="i-name" class="intake-input" />
+          <div class="field"><label for="i-name">Full Name</label><input type="text" id="i-name" class="intake-input" /></div>
+          <div class="field"><label for="i-dob">Date of Birth</label><input type="text" id="i-dob" class="intake-input" placeholder="MM/DD/YYYY" /></div>
+          <div class="field"><label for="i-age">Age</label><input type="text" id="i-age" class="intake-input" /></div>
+          <div class="field"><label for="i-sex">Sex</label>
+            <select id="i-sex" class="intake-input"><option value="">Select...</option><option>Male</option><option>Female</option><option>Other</option></select>
           </div>
-          <div class="field">
-            <label for="i-dob">Date of Birth</label>
-            <input type="text" id="i-dob" class="intake-input" placeholder="MM/DD/YYYY" />
-          </div>
-          <div class="field">
-            <label for="i-phone">Phone Number</label>
-            <input type="tel" id="i-phone" class="intake-input" />
-          </div>
-          <div class="field">
-            <label for="i-email">Email Address</label>
-            <input type="email" id="i-email" class="intake-input" />
-          </div>
-          <div class="field" style="grid-column:1/-1">
-            <label for="i-address">Home Address</label>
-            <input type="text" id="i-address" class="intake-input" />
-          </div>
+          <div class="field"><label for="i-height">Height</label><input type="text" id="i-height" class="intake-input" /></div>
+          <div class="field"><label for="i-weight">Weight</label><input type="text" id="i-weight" class="intake-input" /></div>
+          <div class="field"><label for="i-phone">Phone Number</label><input type="tel" id="i-phone" class="intake-input" /></div>
+          <div class="field"><label for="i-email">Email Address</label><input type="email" id="i-email" class="intake-input" /></div>
+          <div class="field" style="grid-column:1/-1"><label for="i-address">Home Address (where treatment will take place)</label><input type="text" id="i-address" class="intake-input" /></div>
+          <div class="field"><label for="i-occupation">Occupation</label><input type="text" id="i-occupation" class="intake-input" /></div>
+          <div class="field"><label for="i-emergency-name">Emergency Contact Name</label><input type="text" id="i-emergency-name" class="intake-input" /></div>
+          <div class="field" style="grid-column:1/-1"><label for="i-emergency-phone">Emergency Contact Phone Number</label><input type="tel" id="i-emergency-phone" class="intake-input" /></div>
         </div>
       </div>
     </section>
 
+    <!-- Present Health Concerns -->
     <section>
-      <div class="container grid-2">
-        <div class="card">
-          <h3>Main Reason for Visit</h3>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-concern">Primary concern</label>
-            <textarea id="i-concern" class="intake-input" rows="2"></textarea>
-          </div>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-duration">How long has this been going on?</label>
-            <input type="text" id="i-duration" class="intake-input" />
-          </div>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-pain">Pain level or severity (1-10)</label>
-            <input type="text" id="i-pain" class="intake-input" />
-          </div>
-          <div class="field">
-            <label for="i-factors">What makes it better or worse?</label>
-            <textarea id="i-factors" class="intake-input" rows="2"></textarea>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Health History</h3>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-conditions">Medical conditions</label>
-            <textarea id="i-conditions" class="intake-input" rows="2"></textarea>
-          </div>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-meds">Medications or supplements</label>
-            <textarea id="i-meds" class="intake-input" rows="2"></textarea>
-          </div>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-allergies">Allergies</label>
-            <input type="text" id="i-allergies" class="intake-input" />
-          </div>
-          <div class="field">
-            <label for="i-pregnancy">Pregnancy / postpartum status (if applicable)</label>
-            <input type="text" id="i-pregnancy" class="intake-input" />
-          </div>
+      <div class="container card">
+        <h2>Present Health Concerns</h2>
+        <p class="note" style="margin-bottom:1rem">Please list your main concerns or symptoms and rate the discomfort level.</p>
+        <div class="form-grid">
+          <div class="field"><label for="i-c1">Concern #1</label><input type="text" id="i-c1" class="intake-input" /></div>
+          <div class="field"><label for="i-c1p">Pain / Severity Level (0&ndash;10)</label><input type="text" id="i-c1p" class="intake-input" /></div>
+          <div class="field"><label for="i-c2">Concern #2</label><input type="text" id="i-c2" class="intake-input" /></div>
+          <div class="field"><label for="i-c2p">Pain / Severity Level (0&ndash;10)</label><input type="text" id="i-c2p" class="intake-input" /></div>
+          <div class="field"><label for="i-c3">Concern #3</label><input type="text" id="i-c3" class="intake-input" /></div>
+          <div class="field"><label for="i-c3p">Pain / Severity Level (0&ndash;10)</label><input type="text" id="i-c3p" class="intake-input" /></div>
+          <div class="field"><label for="i-c4">Concern #4</label><input type="text" id="i-c4" class="intake-input" /></div>
+          <div class="field"><label for="i-c4p">Pain / Severity Level (0&ndash;10)</label><input type="text" id="i-c4p" class="intake-input" /></div>
         </div>
       </div>
     </section>
 
+    <!-- Health History -->
     <section>
-      <div class="container grid-2">
-        <div class="card">
-          <h3>Wellness Snapshot</h3>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-sleep">Sleep quality</label>
-            <select id="i-sleep" class="intake-input">
-              <option value="">Select...</option>
-              <option value="Good">Good</option>
-              <option value="Fair">Fair</option>
-              <option value="Poor">Poor</option>
-              <option value="Very poor / insomnia">Very poor / insomnia</option>
-            </select>
+      <div class="container card">
+        <h2>Health History</h2>
+        <p class="note" style="margin-bottom:1rem">Please check any conditions you currently have or have experienced in the past.</p>
+        <div class="grid-2">
+          <div>
+            <h3>Respiratory</h3>
+            <div class="checkbox-list note" id="hh-respiratory">
+              <div><label><input type="checkbox" value="Pneumonia"> Pneumonia</label></div>
+              <div><label><input type="checkbox" value="Bronchitis"> Bronchitis</label></div>
+              <div><label><input type="checkbox" value="Asthma"> Asthma</label></div>
+              <div><label><input type="checkbox" value="Sinusitis"> Sinusitis</label></div>
+              <div><label>Other: <input type="text" id="i-resp-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+            </div>
+            <h3 style="margin-top:1rem">Digestive</h3>
+            <div class="checkbox-list note" id="hh-digestive">
+              <div><label><input type="checkbox" value="Gastritis"> Gastritis</label></div>
+              <div><label><input type="checkbox" value="Peptic Ulcer"> Peptic Ulcer</label></div>
+              <div><label><input type="checkbox" value="Colitis"> Colitis</label></div>
+              <div><label><input type="checkbox" value="Constipation"> Constipation</label></div>
+              <div><label><input type="checkbox" value="Diarrhea"> Diarrhea</label></div>
+              <div><label>Other: <input type="text" id="i-dig-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+            </div>
+            <h3 style="margin-top:1rem">Cardiovascular</h3>
+            <div class="checkbox-list note" id="hh-cardio">
+              <div><label><input type="checkbox" value="Coronary Heart Disease"> Coronary Heart Disease</label></div>
+              <div><label><input type="checkbox" value="Arrhythmia"> Arrhythmia</label></div>
+              <div><label><input type="checkbox" value="Hypertension"> Hypertension</label></div>
+              <div><label><input type="checkbox" value="Stroke"> Stroke</label></div>
+              <div><label>Other: <input type="text" id="i-cardio-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+            </div>
+            <h3 style="margin-top:1rem">Urogenital</h3>
+            <div class="checkbox-list note" id="hh-urogenital">
+              <div><label><input type="checkbox" value="UTI"> UTI</label></div>
+              <div><label><input type="checkbox" value="Kidney Stones"> Kidney Stones</label></div>
+              <div><label><input type="checkbox" value="Incontinence"> Incontinence</label></div>
+              <div><label><input type="checkbox" value="Infertility"> Infertility</label></div>
+              <div><label><input type="checkbox" value="Prostatitis"> Prostatitis</label></div>
+              <div><label><input type="checkbox" value="STDs"> STDs</label></div>
+              <div><label>Other: <input type="text" id="i-uro-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+            </div>
+            <h3 style="margin-top:1rem">Skin</h3>
+            <div class="checkbox-list note" id="hh-skin">
+              <div><label><input type="checkbox" value="Rashes"> Rashes</label></div>
+              <div><label><input type="checkbox" value="Itching"> Itching</label></div>
+              <div><label><input type="checkbox" value="Eczema"> Eczema</label></div>
+              <div><label><input type="checkbox" value="Acne"> Acne</label></div>
+              <div><label><input type="checkbox" value="Psoriasis"> Psoriasis</label></div>
+              <div><label>Other: <input type="text" id="i-skin-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+            </div>
           </div>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-energy">Energy level</label>
-            <select id="i-energy" class="intake-input">
-              <option value="">Select...</option>
-              <option value="Good">Good</option>
-              <option value="Fair">Fair</option>
-              <option value="Low">Low</option>
-              <option value="Very low / fatigued">Very low / fatigued</option>
-            </select>
-          </div>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-digestion">Digestion</label>
-            <select id="i-digestion" class="intake-input">
-              <option value="">Select...</option>
-              <option value="Normal">Normal</option>
-              <option value="Some issues">Some issues</option>
-              <option value="Frequent problems">Frequent problems</option>
-            </select>
-          </div>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-stress">Stress level</label>
-            <select id="i-stress" class="intake-input">
-              <option value="">Select...</option>
-              <option value="Low">Low</option>
-              <option value="Moderate">Moderate</option>
-              <option value="High">High</option>
-              <option value="Very high">Very high</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="i-hormonal">Menstrual / hormonal concerns (if applicable)</label>
-            <textarea id="i-hormonal" class="intake-input" rows="2"></textarea>
-          </div>
-        </div>
-        <div class="card soft">
-          <h3>Consent &amp; Policies</h3>
-          <p class="note">
-            I understand that acupuncture and related therapies will be provided by a licensed acupuncturist. I understand that new patients may be asked to prepay to reserve their appointment, and that 24 hours notice is requested for cancellation or rescheduling.
-          </p>
-          <div style="margin:1.2rem 0">
-            <label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.95rem;color:var(--text)">
-              <input type="checkbox" id="i-consent" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" />
-              I have read and agree to the above policies
-            </label>
-          </div>
-          <div class="field" style="margin-bottom:1rem">
-            <label for="i-sig">Full name (as signature)</label>
-            <input type="text" id="i-sig" class="intake-input" />
-          </div>
-          <div class="field">
-            <label for="i-date">Date</label>
-            <input type="date" id="i-date" class="intake-input" />
+          <div>
+            <h3>Musculoskeletal</h3>
+            <div class="checkbox-list note" id="hh-musculo">
+              <div><label><input type="checkbox" value="Low Back Pain"> Low Back Pain</label></div>
+              <div><label><input type="checkbox" value="Joint Pain"> Joint Pain</label></div>
+              <div><label><input type="checkbox" value="Limited Range of Motion"> Limited Range of Motion</label></div>
+              <div><label><input type="checkbox" value="Tendonitis"> Tendonitis</label></div>
+              <div><label><input type="checkbox" value="Arthritis"> Arthritis</label></div>
+              <div><label><input type="checkbox" value="Fractures"> Fractures</label></div>
+              <div><label>Other: <input type="text" id="i-musc-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+            </div>
+            <h3 style="margin-top:1rem">Neurological</h3>
+            <div class="checkbox-list note" id="hh-neuro">
+              <div><label><input type="checkbox" value="Fainting"> Fainting</label></div>
+              <div><label><input type="checkbox" value="Seizures"> Seizures</label></div>
+              <div><label><input type="checkbox" value="Memory Loss"> Memory Loss</label></div>
+              <div><label><input type="checkbox" value="Tremor"> Tremor</label></div>
+              <div><label><input type="checkbox" value="Paralysis"> Paralysis</label></div>
+              <div><label><input type="checkbox" value="Nerve Pain"> Nerve Pain</label></div>
+              <div><label>Other: <input type="text" id="i-neuro-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+            </div>
+            <h3 style="margin-top:1rem">Endocrine</h3>
+            <div class="checkbox-list note" id="hh-endocrine">
+              <div><label><input type="checkbox" value="Thyroid Disorder"> Thyroid Disorder</label></div>
+              <div><label><input type="checkbox" value="Diabetes"> Diabetes</label></div>
+              <div><label><input type="checkbox" value="Excessive Sweating"> Excessive Sweating</label></div>
+              <div><label><input type="checkbox" value="Temperature Sensitivity"> Temperature Sensitivity</label></div>
+              <div><label>Other: <input type="text" id="i-endo-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+            </div>
+            <h3 style="margin-top:1rem">Immunological</h3>
+            <div class="checkbox-list note" id="hh-immuno">
+              <div><label><input type="checkbox" value="Cancer / Tumor"> Cancer / Tumor</label></div>
+              <div><label><input type="checkbox" value="Chronic Fatigue Syndrome"> Chronic Fatigue Syndrome</label></div>
+              <div><label><input type="checkbox" value="Autoimmune Disease"> Autoimmune Disease</label></div>
+              <div><label><input type="checkbox" value="HIV/AIDS"> HIV/AIDS</label></div>
+              <div><label>Other: <input type="text" id="i-immuno-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+            </div>
+            <h3 style="margin-top:1rem">Psychological</h3>
+            <div class="checkbox-list note" id="hh-psych">
+              <div><label><input type="checkbox" value="Depression"> Depression</label></div>
+              <div><label><input type="checkbox" value="Anxiety"> Anxiety</label></div>
+              <div><label><input type="checkbox" value="Addiction"> Addiction</label></div>
+              <div><label>Other: <input type="text" id="i-psych-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Additional Medical Info -->
+    <section>
+      <div class="container card">
+        <h2>Additional Medical Information</h2>
+        <div class="field" style="margin-bottom:1rem"><label for="i-allergies">Known Allergies</label><textarea id="i-allergies" class="intake-input" rows="2"></textarea></div>
+        <div class="field" style="margin-bottom:1rem"><label for="i-surgeries">Previous Surgeries or Major Illnesses</label><textarea id="i-surgeries" class="intake-input" rows="2"></textarea></div>
+        <div class="field" style="margin-bottom:1rem"><label for="i-diagnoses">Medical Diagnoses</label><textarea id="i-diagnoses" class="intake-input" rows="2"></textarea></div>
+        <div class="field"><label for="i-medications">Current Medications or Supplements (Medication &mdash; Dosage &mdash; How Long)</label><textarea id="i-medications" class="intake-input" rows="3"></textarea></div>
+      </div>
+    </section>
+
+    <!-- Lifestyle -->
+    <section>
+      <div class="container card">
+        <h2>Lifestyle</h2>
+        <div class="form-grid">
+          <div class="field"><label for="i-appetite">Appetite</label>
+            <select id="i-appetite" class="intake-input"><option value="">Select...</option><option>Normal</option><option>Low Appetite</option><option>Excessive Appetite</option></select>
+          </div>
+          <div class="field"><label for="i-sleep">Sleep</label>
+            <select id="i-sleep" class="intake-input"><option value="">Select...</option><option>Normal</option><option>Disturbed</option><option>Insomnia</option><option>Excessive Sleepiness</option></select>
+          </div>
+          <div class="field"><label for="i-diet">Diet</label>
+            <select id="i-diet" class="intake-input"><option value="">Select...</option><option>Moderate</option><option>Vegetarian</option><option>Vegan</option><option>Frequent Fast Food</option></select>
+          </div>
+          <div class="field"><label for="i-exercise">Exercise (times per week)</label><input type="text" id="i-exercise" class="intake-input" /></div>
+          <div class="field"><label for="i-alcohol">Alcohol Consumption (times per week)</label><input type="text" id="i-alcohol" class="intake-input" /></div>
+          <div class="field"><label for="i-smoking">Smoking</label>
+            <select id="i-smoking" class="intake-input"><option value="">Select...</option><option>Yes</option><option>No</option></select>
+          </div>
+          <div class="field" style="grid-column:1/-1"><label for="i-emotional">Emotional State</label>
+            <select id="i-emotional" class="intake-input"><option value="">Select...</option><option>Calm</option><option>Anxious</option><option>Depressed</option><option>Angry</option><option>Sad</option></select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Treatment Preferences -->
+    <section>
+      <div class="container card">
+        <h2>Treatment Preferences</h2>
+        <div class="field" style="margin-bottom:1rem"><label for="i-avoid-areas">Areas you DO NOT wish to be worked on</label><input type="text" id="i-avoid-areas" class="intake-input" /></div>
+        <div class="field"><label for="i-oil">Would you like oil or lotion used if manual therapy is applied?</label>
+          <select id="i-oil" class="intake-input"><option value="">Select...</option><option>Yes</option><option>No</option></select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Women's Health -->
+    <section>
+      <div class="container card">
+        <h2>Women's Health (if applicable)</h2>
+        <div class="form-grid">
+          <div class="field"><label for="i-pregnant">Are you pregnant?</label>
+            <select id="i-pregnant" class="intake-input"><option value="">Select...</option><option>Yes</option><option>No</option><option>N/A</option></select>
+          </div>
+          <div class="field"><label for="i-first-period">Age of first period</label><input type="text" id="i-first-period" class="intake-input" /></div>
+          <div class="field"><label for="i-cycle-length">Length of cycle</label><input type="text" id="i-cycle-length" class="intake-input" /></div>
+          <div class="field"><label for="i-last-period">First day of last period</label><input type="text" id="i-last-period" class="intake-input" /></div>
+          <div class="field"><label for="i-live-births">Number of live births</label><input type="text" id="i-live-births" class="intake-input" /></div>
+          <div class="field"><label for="i-miscarriages">Number of miscarriages</label><input type="text" id="i-miscarriages" class="intake-input" /></div>
+          <div class="field"><label for="i-abortions">Number of abortions</label><input type="text" id="i-abortions" class="intake-input" /></div>
+          <div class="field"><label for="i-flow">Menstrual flow description</label><input type="text" id="i-flow" class="intake-input" /></div>
+          <div class="field" style="grid-column:1/-1"><label for="i-pms">PMS symptoms</label><textarea id="i-pms" class="intake-input" rows="2"></textarea></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Consent -->
+    <section>
+      <div class="container card soft">
+        <h2>Consent &amp; Acknowledgements</h2>
+
+        <h3>Medical Advisory &amp; Informed Consent</h3>
+        <p class="note">I understand that acupuncture and Traditional Chinese Medicine are complementary healthcare therapies and are not a substitute for diagnosis or treatment by a licensed physician. I have been advised to consult a physician regarding any medical conditions for which I am seeking treatment.</p>
+        <p class="note">I voluntarily consent to receive acupuncture and related Traditional Chinese Medicine treatments from (Eva) Ching Po Huang, L.Ac. Treatment methods may include, but are not limited to: acupuncture needle insertion, manual therapy / therapeutic bodywork, cupping, gua sha, moxibustion, ear seeds, electrical stimulation, infrared heat therapy, herbal consultation and lifestyle recommendations.</p>
+        <p class="note">I understand that acupuncture is generally considered safe when performed by a licensed practitioner; however, possible side effects may include temporary soreness, bruising, dizziness, fatigue, or fainting. I acknowledge that individual responses to treatment vary and specific outcomes cannot be guaranteed.</p>
+        <p class="note">I have had the opportunity to ask questions and voluntarily consent to treatment.</p>
+        <div style="margin:.8rem 0"><label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.95rem;color:var(--text)"><input type="checkbox" id="i-consent-medical" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" /> I agree to the Medical Advisory &amp; Informed Consent above</label></div>
+
+        <h3 style="margin-top:1.5rem">Health Information Disclosure</h3>
+        <p class="note">I confirm that the health information I have provided in this intake form is accurate and complete to the best of my knowledge. I agree to inform the practitioner of any changes in my health condition, medications, pregnancy status, or medical diagnoses that may affect treatment.</p>
+        <div style="margin:.8rem 0"><label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.95rem;color:var(--text)"><input type="checkbox" id="i-consent-health" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" /> I agree to the Health Information Disclosure above</label></div>
+
+        <h3 style="margin-top:1.5rem">Privacy &amp; Confidentiality</h3>
+        <p class="note">I understand that my personal health information will be kept confidential and used only for treatment, scheduling, and necessary healthcare administrative purposes in accordance with applicable privacy and confidentiality regulations.</p>
+        <div style="margin:.8rem 0"><label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.95rem;color:var(--text)"><input type="checkbox" id="i-consent-privacy" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" /> I agree to the Privacy &amp; Confidentiality terms above</label></div>
+
+        <h3 style="margin-top:1.5rem">Consent for Electronic Communication</h3>
+        <p class="note">I consent to communication regarding appointments and treatment via:</p>
+        <div class="checkbox-list note" style="margin-bottom:.5rem">
+          <div><label><input type="checkbox" id="i-comm-email" value="Email"> Email</label></div>
+          <div><label><input type="checkbox" id="i-comm-sms" value="Text Message (SMS)"> Text Message (SMS)</label></div>
+        </div>
+        <p class="note">I understand that electronic communications may not always be fully secure and I accept the potential risk of unauthorized access.</p>
+
+        <h3 style="margin-top:1.5rem">Appointment &amp; Cancellation Policy</h3>
+        <p class="note">I understand that appointments require at least 24 hours notice for cancellation or rescheduling. Late cancellations or missed appointments may result in fees according to the policies stated on the MySpace Healing website.</p>
+        <div style="margin:.8rem 0"><label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.95rem;color:var(--text)"><input type="checkbox" id="i-consent-cancel" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" /> I agree to the Appointment &amp; Cancellation Policy above</label></div>
+
+        <h3 style="margin-top:1.5rem">Guardian Consent for Minors</h3>
+        <p class="note">If the patient is under the age of 18, a parent or legal guardian must provide consent for treatment.</p>
+        <div class="form-grid" style="margin-top:.5rem">
+          <div class="field"><label for="i-guardian-name">Guardian Name (if applicable)</label><input type="text" id="i-guardian-name" class="intake-input" /></div>
+          <div class="field"><label for="i-guardian-relationship">Relationship to Patient</label><input type="text" id="i-guardian-relationship" class="intake-input" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signature -->
+    <section>
+      <div class="container card">
+        <h2>Patient Acknowledgement</h2>
+        <p class="note" style="margin-bottom:1rem">By signing below, I acknowledge that I have read and understood the information above, had the opportunity to ask questions, and voluntarily consent to treatment.</p>
+        <div class="form-grid">
+          <div class="field"><label for="i-sig-name">Patient Name</label><input type="text" id="i-sig-name" class="intake-input" /></div>
+          <div class="field"><label for="i-sig-date">Date</label><input type="date" id="i-sig-date" class="intake-input" /></div>
+          <div class="field" style="grid-column:1/-1"><label for="i-sig">Signature (typed acknowledgement)</label><input type="text" id="i-sig" class="intake-input" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action buttons -->
     <section class="no-print">
       <div class="container" style="text-align:center">
         <div class="actions" style="justify-content:center">
@@ -209,17 +332,15 @@
 
   <footer class="footer">
     <div class="container">
-      <div>&copy; <span id="year"></span> My Space Healing &middot; Eva Huang, L.Ac.</div>
+      <div>&copy; <span id="year"></span> MySpace Healing &middot; (Eva) Ching Po Huang, L.Ac.</div>
       <div class="note">Private concierge acupuncture services separate from Yupo Health / Yupo Wellness.</div>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Pre-fill today's date
     var today = new Date().toISOString().split('T')[0];
-    document.getElementById('i-date').value = today;
+    document.getElementById('i-sig-date').value = today;
 
     function getVal(id) {
       var el = document.getElementById(id);
@@ -228,56 +349,103 @@
       return (el.value || '').trim();
     }
 
+    function getChecked(containerId) {
+      var el = document.getElementById(containerId);
+      if (!el) return '';
+      var checked = [];
+      el.querySelectorAll('input[type="checkbox"]:checked').forEach(function(cb) { checked.push(cb.value); });
+      return checked.join(', ') || 'None';
+    }
+
     function emailIntake() {
       var name = getVal('i-name');
-      if (!name) {
-        alert('Please enter your full name before sending.');
-        document.getElementById('i-name').focus();
-        return;
-      }
+      if (!name) { alert('Please enter your full name before sending.'); document.getElementById('i-name').focus(); return; }
 
-      var lines = [];
-      lines.push('NEW PATIENT INTAKE FORM');
-      lines.push('========================');
-      lines.push('');
-      lines.push('PATIENT INFORMATION');
-      lines.push('Full Name: ' + name);
-      lines.push('Date of Birth: ' + getVal('i-dob'));
-      lines.push('Phone: ' + getVal('i-phone'));
-      lines.push('Email: ' + getVal('i-email'));
-      lines.push('Address: ' + getVal('i-address'));
-      lines.push('');
-      lines.push('MAIN REASON FOR VISIT');
-      lines.push('Primary Concern: ' + getVal('i-concern'));
-      lines.push('Duration: ' + getVal('i-duration'));
-      lines.push('Pain Level: ' + getVal('i-pain'));
-      lines.push('Better/Worse Factors: ' + getVal('i-factors'));
-      lines.push('');
-      lines.push('HEALTH HISTORY');
-      lines.push('Medical Conditions: ' + getVal('i-conditions'));
-      lines.push('Medications/Supplements: ' + getVal('i-meds'));
-      lines.push('Allergies: ' + getVal('i-allergies'));
-      lines.push('Pregnancy/Postpartum: ' + getVal('i-pregnancy'));
-      lines.push('');
-      lines.push('WELLNESS SNAPSHOT');
-      lines.push('Sleep Quality: ' + getVal('i-sleep'));
-      lines.push('Energy Level: ' + getVal('i-energy'));
-      lines.push('Digestion: ' + getVal('i-digestion'));
-      lines.push('Stress Level: ' + getVal('i-stress'));
-      lines.push('Hormonal Concerns: ' + getVal('i-hormonal'));
-      lines.push('');
-      lines.push('CONSENT');
-      lines.push('Agreed to Policies: ' + getVal('i-consent'));
-      lines.push('Signature: ' + getVal('i-sig'));
-      lines.push('Date: ' + getVal('i-date'));
+      var L = [];
+      L.push('PATIENT INTAKE & CONSENT FORM');
+      L.push('MySpace Healing — (Eva) Ching Po Huang, L.Ac.');
+      L.push('========================================');
+      L.push('');
+      L.push('PERSONAL INFORMATION');
+      L.push('Full Name: ' + name);
+      L.push('Date of Birth: ' + getVal('i-dob'));
+      L.push('Age: ' + getVal('i-age'));
+      L.push('Sex: ' + getVal('i-sex'));
+      L.push('Height: ' + getVal('i-height'));
+      L.push('Weight: ' + getVal('i-weight'));
+      L.push('Phone: ' + getVal('i-phone'));
+      L.push('Email: ' + getVal('i-email'));
+      L.push('Address: ' + getVal('i-address'));
+      L.push('Occupation: ' + getVal('i-occupation'));
+      L.push('Emergency Contact: ' + getVal('i-emergency-name'));
+      L.push('Emergency Phone: ' + getVal('i-emergency-phone'));
+      L.push('');
+      L.push('PRESENT HEALTH CONCERNS');
+      L.push('Concern #1: ' + getVal('i-c1') + ' (Pain: ' + getVal('i-c1p') + ')');
+      L.push('Concern #2: ' + getVal('i-c2') + ' (Pain: ' + getVal('i-c2p') + ')');
+      L.push('Concern #3: ' + getVal('i-c3') + ' (Pain: ' + getVal('i-c3p') + ')');
+      L.push('Concern #4: ' + getVal('i-c4') + ' (Pain: ' + getVal('i-c4p') + ')');
+      L.push('');
+      L.push('HEALTH HISTORY');
+      L.push('Respiratory: ' + getChecked('hh-respiratory') + (getVal('i-resp-other') ? ', ' + getVal('i-resp-other') : ''));
+      L.push('Digestive: ' + getChecked('hh-digestive') + (getVal('i-dig-other') ? ', ' + getVal('i-dig-other') : ''));
+      L.push('Cardiovascular: ' + getChecked('hh-cardio') + (getVal('i-cardio-other') ? ', ' + getVal('i-cardio-other') : ''));
+      L.push('Urogenital: ' + getChecked('hh-urogenital') + (getVal('i-uro-other') ? ', ' + getVal('i-uro-other') : ''));
+      L.push('Musculoskeletal: ' + getChecked('hh-musculo') + (getVal('i-musc-other') ? ', ' + getVal('i-musc-other') : ''));
+      L.push('Neurological: ' + getChecked('hh-neuro') + (getVal('i-neuro-other') ? ', ' + getVal('i-neuro-other') : ''));
+      L.push('Endocrine: ' + getChecked('hh-endocrine') + (getVal('i-endo-other') ? ', ' + getVal('i-endo-other') : ''));
+      L.push('Immunological: ' + getChecked('hh-immuno') + (getVal('i-immuno-other') ? ', ' + getVal('i-immuno-other') : ''));
+      L.push('Skin: ' + getChecked('hh-skin') + (getVal('i-skin-other') ? ', ' + getVal('i-skin-other') : ''));
+      L.push('Psychological: ' + getChecked('hh-psych') + (getVal('i-psych-other') ? ', ' + getVal('i-psych-other') : ''));
+      L.push('');
+      L.push('ADDITIONAL MEDICAL INFORMATION');
+      L.push('Allergies: ' + getVal('i-allergies'));
+      L.push('Surgeries/Illnesses: ' + getVal('i-surgeries'));
+      L.push('Diagnoses: ' + getVal('i-diagnoses'));
+      L.push('Medications: ' + getVal('i-medications'));
+      L.push('');
+      L.push('LIFESTYLE');
+      L.push('Appetite: ' + getVal('i-appetite'));
+      L.push('Sleep: ' + getVal('i-sleep'));
+      L.push('Diet: ' + getVal('i-diet'));
+      L.push('Exercise: ' + getVal('i-exercise') + ' times/week');
+      L.push('Alcohol: ' + getVal('i-alcohol') + ' times/week');
+      L.push('Smoking: ' + getVal('i-smoking'));
+      L.push('Emotional State: ' + getVal('i-emotional'));
+      L.push('');
+      L.push('TREATMENT PREFERENCES');
+      L.push('Areas to avoid: ' + getVal('i-avoid-areas'));
+      L.push('Oil/lotion: ' + getVal('i-oil'));
+      L.push('');
+      L.push("WOMEN'S HEALTH");
+      L.push('Pregnant: ' + getVal('i-pregnant'));
+      L.push('Age of first period: ' + getVal('i-first-period'));
+      L.push('Cycle length: ' + getVal('i-cycle-length'));
+      L.push('Last period: ' + getVal('i-last-period'));
+      L.push('Live births: ' + getVal('i-live-births'));
+      L.push('Miscarriages: ' + getVal('i-miscarriages'));
+      L.push('Abortions: ' + getVal('i-abortions'));
+      L.push('Flow: ' + getVal('i-flow'));
+      L.push('PMS symptoms: ' + getVal('i-pms'));
+      L.push('');
+      L.push('CONSENT');
+      L.push('Medical Consent: ' + getVal('i-consent-medical'));
+      L.push('Health Info Disclosure: ' + getVal('i-consent-health'));
+      L.push('Privacy: ' + getVal('i-consent-privacy'));
+      L.push('Electronic Comm - Email: ' + (document.getElementById('i-comm-email').checked ? 'Yes' : 'No'));
+      L.push('Electronic Comm - SMS: ' + (document.getElementById('i-comm-sms').checked ? 'Yes' : 'No'));
+      L.push('Cancellation Policy: ' + getVal('i-consent-cancel'));
+      L.push('Guardian Name: ' + getVal('i-guardian-name'));
+      L.push('Guardian Relationship: ' + getVal('i-guardian-relationship'));
+      L.push('');
+      L.push('PATIENT ACKNOWLEDGEMENT');
+      L.push('Patient Name: ' + getVal('i-sig-name'));
+      L.push('Date: ' + getVal('i-sig-date'));
+      L.push('Signature: ' + getVal('i-sig'));
 
       var subject = 'New Patient Intake - ' + name;
-      var body = lines.join('\n');
-
-      var mailto = 'mailto:eva@myspacehealing.com'
-        + '?subject=' + encodeURIComponent(subject)
-        + '&body=' + encodeURIComponent(body);
-
+      var body = L.join('\n');
+      var mailto = 'mailto:eva@myspacehealing.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       window.location.href = mailto;
     }
   </script>
