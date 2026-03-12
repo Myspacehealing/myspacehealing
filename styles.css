@@ -45,8 +45,8 @@ header{
   padding:.6rem 0;
   flex-wrap:wrap
 }
-.brand{display:flex;align-items:center;gap:.8rem;flex-shrink:0}
-.brand-orb{width:80px;height:80px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 3px 8px rgba(122,78,117,.22))}
+.brand{display:flex;align-items:flex-start;gap:.4rem;flex-shrink:0}
+.brand-orb{width:68px;height:68px;object-fit:contain;margin:-8px -6px -8px 0;filter:drop-shadow(0 3px 8px rgba(122,78,117,.22))}
 .brand-text{display:flex;flex-direction:column;line-height:1.15}
 .brand-wordmark{display:flex;align-items:baseline;gap:.3rem}
 .brand-script{font-family:'Dancing Script',cursive;font-size:1.65rem;font-weight:500;color:var(--deep-plum)}
@@ -272,7 +272,7 @@ select.intake-input{cursor:pointer}
   .page-hero{min-height:400px;background-attachment:scroll}
   .hero-wrap{max-width:65%;padding:2.5rem 0}
   .nav{padding:.4rem 0}
-  .brand-orb{width:60px;height:60px}
+  .brand-orb{width:44px;height:44px}
   .brand-script{font-size:1.35rem}
   .brand-healing{font-size:1.05rem}
   .brand-sub{font-size:.72rem}
@@ -306,7 +306,7 @@ select.intake-input{cursor:pointer}
   }
 
   /* Brand compact */
-  .brand-orb{width:42px;height:42px}
+  .brand-orb{width:36px;height:36px}
   .brand-script{font-size:1.1rem}
   .brand-healing{font-size:.82rem;letter-spacing:.04em}
   .brand-sub{font-size:.6rem}
