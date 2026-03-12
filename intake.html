@@ -87,7 +87,9 @@
           <div class="field"><label for="i-weight">Weight</label><input type="text" id="i-weight" class="intake-input" /></div>
           <div class="field"><label for="i-phone">Phone Number</label><input type="tel" id="i-phone" class="intake-input" /></div>
           <div class="field"><label for="i-email">Email Address</label><input type="email" id="i-email" class="intake-input" /></div>
-          <div class="field" style="grid-column:1/-1"><label for="i-address">Home Address (where treatment will take place)</label><input type="text" id="i-address" class="intake-input" /></div>
+          <div class="field" style="grid-column:1/-1"><label for="i-address">Home Address</label><input type="text" id="i-address" class="intake-input" /></div>
+          <div style="grid-column:1/-1;margin:.1rem 0"><label style="display:flex;align-items:center;gap:.5rem;cursor:pointer;font-size:.9rem;color:var(--text)"><input type="checkbox" id="i-same-address" onchange="toggleTreatmentAddr()" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" /> Treatment address is the same as home address</label></div>
+          <div class="field" id="treatment-addr-field" style="grid-column:1/-1"><label for="i-treatment-address">Treatment Address (if different from home)</label><input type="text" id="i-treatment-address" class="intake-input" /></div>
           <div class="field"><label for="i-occupation">Occupation</label><input type="text" id="i-occupation" class="intake-input" /></div>
           <div class="field"><label for="i-emergency-name">Emergency Contact Name</label><input type="text" id="i-emergency-name" class="intake-input" /></div>
           <div class="field" style="grid-column:1/-1"><label for="i-emergency-phone">Emergency Contact Phone Number</label><input type="tel" id="i-emergency-phone" class="intake-input" /></div>
@@ -364,6 +366,17 @@
     var today = new Date().toISOString().split('T')[0];
     document.getElementById('i-sig-date').value = today;
 
+    function toggleTreatmentAddr() {
+      var cb = document.getElementById('i-same-address');
+      var field = document.getElementById('treatment-addr-field');
+      if (cb.checked) {
+        field.style.display = 'none';
+        document.getElementById('i-treatment-address').value = '';
+      } else {
+        field.style.display = '';
+      }
+    }
+
     function getVal(id) {
       var el = document.getElementById(id);
       if (!el) return '';
@@ -397,7 +410,9 @@
       L.push('Weight: ' + getVal('i-weight'));
       L.push('Phone: ' + getVal('i-phone'));
       L.push('Email: ' + getVal('i-email'));
-      L.push('Address: ' + getVal('i-address'));
+      L.push('Home Address: ' + getVal('i-address'));
+      var sameAddr = document.getElementById('i-same-address').checked;
+      L.push('Treatment Address: ' + (sameAddr ? 'Same as home' : (getVal('i-treatment-address') || 'Not provided')));
       L.push('Occupation: ' + getVal('i-occupation'));
       L.push('Emergency Contact: ' + getVal('i-emergency-name'));
       L.push('Emergency Phone: ' + getVal('i-emergency-phone'));
