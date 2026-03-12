@@ -369,17 +369,42 @@ select.intake-input{cursor:pointer}
 /* ── Print ── */
 @media print{
   header,.no-print,.footer{display:none!important}
-  body{background:#fff;line-height:1.5;font-size:11pt}
-  .container{width:100%;max-width:100%}
-  .hero-simple{padding:0}
-  .banner{border:none;box-shadow:none;padding:0;background:none}
-  .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid;page-break-inside:avoid}
+  body{background:#fff;line-height:1.35;font-size:10pt;margin:0;padding:0}
+  .container{width:100%;max-width:100%;padding:0 .4rem}
+  /* Hero / banner — compact, no full-page waste */
+  .hero-simple{padding:0;margin:0;min-height:0}
+  .banner{border:none;box-shadow:none;padding:.3rem 0;background:none;margin:0}
+  .banner .lead{margin-bottom:.2rem;font-size:9.5pt}
+  .eyebrow{margin-bottom:.15rem;font-size:9pt}
+  h1{font-size:1.2rem;margin:.2rem 0}
+  h2{font-size:1.05rem;margin:.35rem 0 .15rem}
+  h3{font-size:.92rem;margin:.25rem 0 .1rem}
+  /* Cards — tight padding, allow breaks inside large cards */
+  .card{box-shadow:none;border:1px solid #ccc;padding:.4rem .5rem;margin-bottom:.3rem;border-radius:3px}
   .card:hover{transform:none;box-shadow:none}
-  .grid-2{grid-template-columns:repeat(2,1fr)}
-  .form-grid{grid-template-columns:repeat(2,1fr)}
-  .intake-input{border-bottom:1px solid #999}
-  h1{font-size:1.6rem}
-  h2{font-size:1.3rem}
-  .eyebrow{margin-bottom:.5rem}
-  section{padding:.5rem 0 1rem}
+  section{padding:.05rem 0;margin:0}
+  /* Form fields — compact */
+  .form-grid{grid-template-columns:repeat(2,1fr);gap:.25rem}
+  .field{padding:.2rem .25rem;margin:0;border-radius:3px}
+  .field label{font-size:8.5pt;margin-bottom:.05rem}
+  .intake-input{border-bottom:1px solid #999;padding:.1rem 0;font-size:9.5pt;min-height:0}
+  textarea.intake-input{min-height:1em;resize:none}
+  select.intake-input{font-size:9pt;height:auto;padding:.1rem 0}
+  /* Two-column health history grid */
+  .grid-2{grid-template-columns:repeat(2,1fr);gap:.1rem .6rem}
+  .checkbox-list div{margin:.02rem 0}
+  .checkbox-list label{font-size:8.5pt}
+  .checkbox-list input[type="checkbox"]{width:.65rem;height:.65rem}
+  .checkbox-list input[type="text"]{font-size:8.5pt}
+  /* Consent section */
+  .card.soft{padding:.35rem .5rem}
+  .card.soft .note{font-size:8pt;margin-bottom:.15rem;line-height:1.25}
+  .card.soft label{font-size:8.5pt}
+  /* Allow page breaks inside large sections, avoid inside small groups */
+  .card{page-break-inside:auto;break-inside:auto}
+  .field{break-inside:avoid;page-break-inside:avoid}
+  .form-grid{break-inside:auto}
+  .note{font-size:8.5pt;margin-bottom:.15rem}
+  /* Remove AOS transforms */
+  [data-aos]{opacity:1!important;transform:none!important}
 }
