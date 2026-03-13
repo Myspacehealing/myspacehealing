@@ -264,6 +264,47 @@
       </div>
     </section>
 
+    <!-- Prepayment Estimate -->
+    <section>
+      <div class="container card">
+        <h2>Prepayment Estimate</h2>
+        <p class="note" style="margin-bottom:1rem">Select your planned services below to see an estimated prepayment amount. Final pricing is confirmed by Eva prior to scheduling and may vary based on travel distance and other factors. See <a href="pricing.html">Pricing &amp; Policies</a> for full details.</p>
+        <div class="form-grid">
+          <div class="field"><label for="i-visit-type">Visit type</label>
+            <select id="i-visit-type" class="intake-input" onchange="calcEstimate()">
+              <option value="">Select...</option>
+              <option value="250">Single person &mdash; $250</option>
+              <option value="350">Two-person visit &mdash; $350</option>
+            </select>
+          </div>
+          <div class="field"><label for="i-visit-time">Appointment time</label>
+            <select id="i-visit-time" class="intake-input" onchange="calcEstimate()">
+              <option value="0">Before 7:00 PM (standard)</option>
+              <option value="50">After 7:00 PM (+$50 evening fee)</option>
+            </select>
+          </div>
+        </div>
+        <p class="note" style="margin:.8rem 0 .4rem;font-weight:600">Optional add-on therapies:</p>
+        <div class="checkbox-list" id="addon-list" style="margin-bottom:1rem">
+          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Cupping &mdash; $40</label></div>
+          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Gua sha &mdash; $40</label></div>
+          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Moxibustion &mdash; $40</label></div>
+          <div><label><input type="checkbox" value="10" onchange="calcEstimate()"> Ear seeds &mdash; $10</label></div>
+          <div><label><input type="checkbox" value="30" onchange="calcEstimate()"> Therapeutic bodywork (+10 min) &mdash; $30</label></div>
+        </div>
+        <div class="field"><label>Holiday visit?</label>
+          <select id="i-holiday" class="intake-input" onchange="calcEstimate()">
+            <option value="0">No</option>
+            <option value="100">Yes (+$100 holiday fee)</option>
+          </select>
+        </div>
+        <div id="estimate-result" style="margin-top:1rem;padding:.8rem 1rem;background:var(--soft-mauve);border-radius:10px;font-size:1.05rem;display:none">
+          <strong>Estimated prepayment: <span id="estimate-total">$0</span></strong>
+          <div class="note" style="margin-top:.3rem">This is an estimate only. Eva will confirm the exact amount before your appointment.</div>
+        </div>
+      </div>
+    </section>
+
     <!-- Women's Health -->
     <section>
       <div class="container card">
@@ -366,6 +407,24 @@
     var today = new Date().toISOString().split('T')[0];
     document.getElementById('i-sig-date').value = today;
 
+    function calcEstimate() {
+      var base = parseInt(document.getElementById('i-visit-type').value) || 0;
+      var evening = parseInt(document.getElementById('i-visit-time').value) || 0;
+      var holiday = parseInt(document.getElementById('i-holiday').value) || 0;
+      var addons = 0;
+      document.querySelectorAll('#addon-list input[type="checkbox"]:checked').forEach(function(cb) {
+        addons += parseInt(cb.value) || 0;
+      });
+      var total = base + evening + holiday + addons;
+      var result = document.getElementById('estimate-result');
+      if (base > 0) {
+        document.getElementById('estimate-total').textContent = '$' + total;
+        result.style.display = '';
+      } else {
+        result.style.display = 'none';
+      }
+    }
+
     function toggleTreatmentAddr() {
       var cb = document.getElementById('i-same-address');
       var field = document.getElementById('treatment-addr-field');
@@ -453,6 +512,17 @@
       L.push('TREATMENT PREFERENCES');
       L.push('Areas to avoid: ' + getVal('i-avoid-areas'));
       L.push('Oil/lotion: ' + getVal('i-oil'));
+      L.push('');
+      L.push('PREPAYMENT ESTIMATE');
+      var visitType = document.getElementById('i-visit-type');
+      L.push('Visit type: ' + (visitType.options[visitType.selectedIndex].text || 'Not selected'));
+      L.push('Appointment time: ' + document.getElementById('i-visit-time').options[document.getElementById('i-visit-time').selectedIndex].text);
+      L.push('Holiday visit: ' + document.getElementById('i-holiday').options[document.getElementById('i-holiday').selectedIndex].text);
+      var addons = [];
+      document.querySelectorAll('#addon-list input[type="checkbox"]:checked').forEach(function(cb) { addons.push(cb.parentElement.textContent.trim()); });
+      L.push('Add-ons: ' + (addons.length ? addons.join(', ') : 'None'));
+      var estEl = document.getElementById('estimate-total');
+      L.push('Estimated total: ' + (estEl ? estEl.textContent : 'N/A'));
       L.push('');
       L.push("WOMEN'S HEALTH");
       L.push('Pregnant: ' + getVal('i-pregnant'));
