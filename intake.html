@@ -290,17 +290,38 @@
           <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Gua sha &mdash; $40</label></div>
           <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Moxibustion &mdash; $40</label></div>
           <div><label><input type="checkbox" value="10" onchange="calcEstimate()"> Ear seeds &mdash; $10</label></div>
-          <div><label><input type="checkbox" value="30" onchange="calcEstimate()"> Therapeutic bodywork (+10 min) &mdash; $30</label></div>
         </div>
-        <div class="field"><label>Holiday visit?</label>
-          <select id="i-holiday" class="intake-input" onchange="calcEstimate()">
-            <option value="0">No</option>
-            <option value="100">Yes (+$100 holiday fee)</option>
+        <div class="field" style="margin-bottom:1rem"><label for="i-bodywork">Therapeutic bodywork ($30 per 10 min, up to 60 min)</label>
+          <select id="i-bodywork" class="intake-input" onchange="calcEstimate()">
+            <option value="0">None</option>
+            <option value="30">10 min &mdash; $30</option>
+            <option value="60">20 min &mdash; $60</option>
+            <option value="90">30 min &mdash; $90</option>
+            <option value="120">40 min &mdash; $120</option>
+            <option value="150">50 min &mdash; $150</option>
+            <option value="180">60 min &mdash; $180</option>
           </select>
+        </div>
+        <div class="form-grid">
+          <div class="field"><label>Holiday visit?</label>
+            <select id="i-holiday" class="intake-input" onchange="calcEstimate()">
+              <option value="0">No</option>
+              <option value="100">Yes (+$100 holiday fee)</option>
+            </select>
+          </div>
+          <div class="field"><label for="i-travel">Travel zone (from Eva's base in NYC)</label>
+            <select id="i-travel" class="intake-input" onchange="calcEstimate()">
+              <option value="0">Manhattan / nearby Brooklyn &mdash; no surcharge</option>
+              <option value="25">Outer Brooklyn / Queens / Bronx &mdash; ~$25</option>
+              <option value="45">Staten Island / nearby NJ &mdash; ~$45</option>
+              <option value="65">NJ / CT / Long Island &mdash; ~$65</option>
+              <option value="100">Upstate NY / further out &mdash; ~$100+</option>
+            </select>
+          </div>
         </div>
         <div id="estimate-result" style="margin-top:1rem;padding:.8rem 1rem;background:var(--soft-mauve);border-radius:10px;font-size:1.05rem;display:none">
           <strong>Estimated prepayment: <span id="estimate-total">$0</span></strong>
-          <div class="note" style="margin-top:.3rem">This is an estimate only. Eva will confirm the exact amount before your appointment.</div>
+          <div class="note" style="margin-top:.3rem">This is an estimate only. Travel surcharges are approximate and may vary based on current gas prices, tolls, and traffic conditions. Eva will confirm the exact amount before your appointment.</div>
         </div>
       </div>
     </section>
@@ -415,7 +436,9 @@
       document.querySelectorAll('#addon-list input[type="checkbox"]:checked').forEach(function(cb) {
         addons += parseInt(cb.value) || 0;
       });
-      var total = base + evening + holiday + addons;
+      var bodywork = parseInt(document.getElementById('i-bodywork').value) || 0;
+      var travel = parseInt(document.getElementById('i-travel').value) || 0;
+      var total = base + evening + holiday + addons + bodywork + travel;
       var result = document.getElementById('estimate-result');
       if (base > 0) {
         document.getElementById('estimate-total').textContent = '$' + total;
@@ -518,9 +541,13 @@
       L.push('Visit type: ' + (visitType.options[visitType.selectedIndex].text || 'Not selected'));
       L.push('Appointment time: ' + document.getElementById('i-visit-time').options[document.getElementById('i-visit-time').selectedIndex].text);
       L.push('Holiday visit: ' + document.getElementById('i-holiday').options[document.getElementById('i-holiday').selectedIndex].text);
+      var travelSel = document.getElementById('i-travel');
+      L.push('Travel zone: ' + travelSel.options[travelSel.selectedIndex].text);
       var addons = [];
       document.querySelectorAll('#addon-list input[type="checkbox"]:checked').forEach(function(cb) { addons.push(cb.parentElement.textContent.trim()); });
       L.push('Add-ons: ' + (addons.length ? addons.join(', ') : 'None'));
+      var bwSel = document.getElementById('i-bodywork');
+      L.push('Bodywork: ' + bwSel.options[bwSel.selectedIndex].text);
       var estEl = document.getElementById('estimate-total');
       L.push('Estimated total: ' + (estEl ? estEl.textContent : 'N/A'));
       L.push('');
