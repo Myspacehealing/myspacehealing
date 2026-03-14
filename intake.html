@@ -139,7 +139,8 @@
               <div><label><input type="checkbox" value="Bronchitis"> Bronchitis</label></div>
               <div><label><input type="checkbox" value="Asthma"> Asthma</label></div>
               <div><label><input type="checkbox" value="Sinusitis"> Sinusitis</label></div>
-              <div><label>Other: <input type="text" id="i-resp-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+              <div><label><input type="checkbox" onchange="toggleOther('i-resp-other')"> Other</label></div>
+              <div id="i-resp-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-resp-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
             <h3 style="margin-top:1rem">Digestive</h3>
             <div class="checkbox-list note" id="hh-digestive">
@@ -148,7 +149,8 @@
               <div><label><input type="checkbox" value="Colitis"> Colitis</label></div>
               <div><label><input type="checkbox" value="Constipation"> Constipation</label></div>
               <div><label><input type="checkbox" value="Diarrhea"> Diarrhea</label></div>
-              <div><label>Other: <input type="text" id="i-dig-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+              <div><label><input type="checkbox" onchange="toggleOther('i-dig-other')"> Other</label></div>
+              <div id="i-dig-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-dig-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
             <h3 style="margin-top:1rem">Cardiovascular</h3>
             <div class="checkbox-list note" id="hh-cardio">
@@ -156,7 +158,8 @@
               <div><label><input type="checkbox" value="Arrhythmia"> Arrhythmia</label></div>
               <div><label><input type="checkbox" value="Hypertension"> Hypertension</label></div>
               <div><label><input type="checkbox" value="Stroke"> Stroke</label></div>
-              <div><label>Other: <input type="text" id="i-cardio-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+              <div><label><input type="checkbox" onchange="toggleOther('i-cardio-other')"> Other</label></div>
+              <div id="i-cardio-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-cardio-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
             <h3 style="margin-top:1rem">Urogenital</h3>
             <div class="checkbox-list note" id="hh-urogenital">
@@ -166,7 +169,8 @@
               <div><label><input type="checkbox" value="Infertility"> Infertility</label></div>
               <div><label><input type="checkbox" value="Prostatitis"> Prostatitis</label></div>
               <div><label><input type="checkbox" value="STDs"> STDs</label></div>
-              <div><label>Other: <input type="text" id="i-uro-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+              <div><label><input type="checkbox" onchange="toggleOther('i-uro-other')"> Other</label></div>
+              <div id="i-uro-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-uro-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
             <h3 style="margin-top:1rem">Skin</h3>
             <div class="checkbox-list note" id="hh-skin">
@@ -175,7 +179,8 @@
               <div><label><input type="checkbox" value="Eczema"> Eczema</label></div>
               <div><label><input type="checkbox" value="Acne"> Acne</label></div>
               <div><label><input type="checkbox" value="Psoriasis"> Psoriasis</label></div>
-              <div><label>Other: <input type="text" id="i-skin-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+              <div><label><input type="checkbox" onchange="toggleOther('i-skin-other')"> Other</label></div>
+              <div id="i-skin-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-skin-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
           </div>
           <div>
@@ -187,7 +192,8 @@
               <div><label><input type="checkbox" value="Tendonitis"> Tendonitis</label></div>
               <div><label><input type="checkbox" value="Arthritis"> Arthritis</label></div>
               <div><label><input type="checkbox" value="Fractures"> Fractures</label></div>
-              <div><label>Other: <input type="text" id="i-musc-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+              <div><label><input type="checkbox" onchange="toggleOther('i-musc-other')"> Other</label></div>
+              <div id="i-musc-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-musc-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
             <h3 style="margin-top:1rem">Neurological</h3>
             <div class="checkbox-list note" id="hh-neuro">
@@ -197,7 +203,8 @@
               <div><label><input type="checkbox" value="Tremor"> Tremor</label></div>
               <div><label><input type="checkbox" value="Paralysis"> Paralysis</label></div>
               <div><label><input type="checkbox" value="Nerve Pain"> Nerve Pain</label></div>
-              <div><label>Other: <input type="text" id="i-neuro-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+              <div><label><input type="checkbox" onchange="toggleOther('i-neuro-other')"> Other</label></div>
+              <div id="i-neuro-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-neuro-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
             <h3 style="margin-top:1rem">Endocrine</h3>
             <div class="checkbox-list note" id="hh-endocrine">
@@ -205,7 +212,8 @@
               <div><label><input type="checkbox" value="Diabetes"> Diabetes</label></div>
               <div><label><input type="checkbox" value="Excessive Sweating"> Excessive Sweating</label></div>
               <div><label><input type="checkbox" value="Temperature Sensitivity"> Temperature Sensitivity</label></div>
-              <div><label>Other: <input type="text" id="i-endo-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+              <div><label><input type="checkbox" onchange="toggleOther('i-endo-other')"> Other</label></div>
+              <div id="i-endo-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-endo-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
             <h3 style="margin-top:1rem">Immunological</h3>
             <div class="checkbox-list note" id="hh-immuno">
@@ -213,14 +221,16 @@
               <div><label><input type="checkbox" value="Chronic Fatigue Syndrome"> Chronic Fatigue Syndrome</label></div>
               <div><label><input type="checkbox" value="Autoimmune Disease"> Autoimmune Disease</label></div>
               <div><label><input type="checkbox" value="HIV/AIDS"> HIV/AIDS</label></div>
-              <div><label>Other: <input type="text" id="i-immuno-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+              <div><label><input type="checkbox" onchange="toggleOther('i-immuno-other')"> Other</label></div>
+              <div id="i-immuno-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-immuno-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
             <h3 style="margin-top:1rem">Psychological</h3>
             <div class="checkbox-list note" id="hh-psych">
               <div><label><input type="checkbox" value="Depression"> Depression</label></div>
               <div><label><input type="checkbox" value="Anxiety"> Anxiety</label></div>
               <div><label><input type="checkbox" value="Addiction"> Addiction</label></div>
-              <div><label>Other: <input type="text" id="i-psych-other" class="intake-input" style="display:inline;width:60%" /></label></div>
+              <div><label><input type="checkbox" onchange="toggleOther('i-psych-other')"> Other</label></div>
+              <div id="i-psych-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-psych-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
           </div>
         </div>
@@ -324,8 +334,9 @@
               <div style="display:inline-block;margin-right:1rem"><label><input type="checkbox" value="Insomnia"> Insomnia</label></div>
               <div style="display:inline-block;margin-right:1rem"><label><input type="checkbox" value="Nausea"> Nausea</label></div>
               <div style="display:inline-block;margin-right:1rem"><label><input type="checkbox" value="None"> None</label></div>
-              <div style="display:inline-block"><label>Other: <input type="text" id="i-pms-other" class="intake-input" style="display:inline;width:120px" /></label></div>
+              <div style="display:inline-block;margin-right:1rem"><label><input type="checkbox" onchange="toggleOther('i-pms-other')"> Other</label></div>
             </div>
+            <div id="i-pms-other-wrap" style="display:none;margin-top:.4rem"><textarea id="i-pms-other" class="intake-input" rows="2" placeholder="Please describe other PMS symptoms..."></textarea></div>
           </div>
         </div>
       </div>
@@ -452,6 +463,18 @@
       } else {
         field.style.display = 'none';
         document.getElementById('i-menopause-age').value = '';
+      }
+    }
+
+    function toggleOther(id) {
+      var wrap = document.getElementById(id + '-wrap');
+      var ta = document.getElementById(id);
+      if (wrap.style.display === 'none') {
+        wrap.style.display = '';
+        ta.focus();
+      } else {
+        wrap.style.display = 'none';
+        ta.value = '';
       }
     }
 
