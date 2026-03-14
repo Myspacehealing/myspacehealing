@@ -69,11 +69,11 @@
       <div class="container card" data-aos="fade-up">
         <h2>Build your estimate</h2>
         <div class="form-grid">
-          <div class="field"><label for="e-visit-type">Visit type</label>
+          <div class="field"><label for="e-visit-type">Acupuncture visit type<span class="info-tip" role="button" tabindex="0" aria-label="About visit pricing">?<span class="tip-body">Base pricing covers a private in-home acupuncture session (~75&ndash;90 min total, including consultation, setup, treatment, and cleanup). The acupuncture treatment itself is approximately 60 minutes.</span></span></label>
             <select id="e-visit-type" class="intake-input" onchange="calcEstimate()">
               <option value="">Select...</option>
-              <option value="250">Single person &mdash; $250</option>
-              <option value="350">Two-person visit &mdash; $350</option>
+              <option value="250">Single person acupuncture &mdash; $250</option>
+              <option value="350">Two-person acupuncture visit &mdash; $350</option>
             </select>
           </div>
           <div class="field"><label for="e-visit-time">Appointment time</label>
@@ -86,14 +86,14 @@
 
         <p class="note" style="margin:1.2rem 0 .5rem;font-weight:600">Optional add-on therapies:</p>
         <div class="checkbox-list" id="addon-list" style="margin-bottom:1rem">
-          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Cupping &mdash; $40</label></div>
-          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Gua sha &mdash; $40</label></div>
-          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Moxibustion &mdash; $40</label></div>
-          <div><label><input type="checkbox" value="10" onchange="calcEstimate()"> Ear seeds &mdash; $10</label></div>
+          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Cupping &mdash; $40</label><span class="info-tip" role="button" tabindex="0" aria-label="About cupping">?<span class="tip-body">Glass or silicone cups create gentle suction on the skin to improve blood flow, ease muscle tension, and reduce inflammation. Adds roughly 10&ndash;15 minutes to your visit.</span></span></div>
+          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Gua sha &mdash; $40</label><span class="info-tip" role="button" tabindex="0" aria-label="About gua sha">?<span class="tip-body">A smooth-edged tool is used in short strokes along the skin to boost circulation, release fascial tension, and support the body&rsquo;s natural healing response. Adds roughly 10&ndash;15 minutes to your visit.</span></span></div>
+          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Moxibustion &mdash; $40</label><span class="info-tip" role="button" tabindex="0" aria-label="About moxibustion">?<span class="tip-body">Dried mugwort herb is gently warmed near the skin or on acupuncture points to stimulate circulation, warm the meridians, and support immune function. Adds roughly 10&ndash;15 minutes to your visit.</span></span></div>
+          <div><label><input type="checkbox" value="10" onchange="calcEstimate()"> Ear seeds &mdash; $10</label><span class="info-tip" role="button" tabindex="0" aria-label="About ear seeds">?<span class="tip-body">Tiny seeds or metal beads are placed on specific points of the ear with adhesive tape, providing gentle acupressure that continues working between visits. Adds roughly 5 minutes to your visit.</span></span></div>
         </div>
 
         <div class="form-grid">
-          <div class="field"><label for="e-bodywork">Therapeutic bodywork ($30 per 10 min, up to 60 min)</label>
+          <div class="field"><label for="e-bodywork">Therapeutic bodywork / medical massage ($30 per 10 min, up to 60 min)<span class="info-tip" role="button" tabindex="0" aria-label="About therapeutic bodywork">?<span class="tip-body">Targeted hands-on manual therapy focusing on pain relief, muscle recovery, and tissue mobilization. Only available as part of an acupuncture visit, not offered standalone.</span></span></label>
             <select id="e-bodywork" class="intake-input" onchange="calcEstimate()">
               <option value="0">None</option>
               <option value="30">10 min &mdash; $30</option>

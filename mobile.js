@@ -102,4 +102,15 @@
     window.addEventListener('scroll', updateActive, {passive:true});
     updateActive();
   }
+
+  // Info-tip tooltips: toggle on tap for mobile
+  document.querySelectorAll('.info-tip').forEach(function(tip){
+    tip.addEventListener('click', function(e){
+      e.stopPropagation();
+      var wasOpen = tip.classList.contains('open');
+      document.querySelectorAll('.info-tip.open').forEach(function(t){ t.classList.remove('open'); });
+      if(!wasOpen) tip.classList.add('open');
+    });
+  });
+  document.addEventListener('click', function(){ document.querySelectorAll('.info-tip.open').forEach(function(t){ t.classList.remove('open'); }); });
 })();
