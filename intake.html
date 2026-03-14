@@ -111,23 +111,17 @@
       <div class="container card">
         <h2>Present Health Concerns</h2>
         <p class="note" style="margin-bottom:1rem">Please list your main concerns or symptoms and rate the discomfort level.</p>
-        <div class="form-grid">
-          <div class="field"><label for="i-c1">Concern #1</label><input type="text" id="i-c1" class="intake-input" /></div>
-          <div class="field"><label for="i-c1p">Severity (0&ndash;10)</label>
-            <select id="i-c1p" class="intake-input"><option value="">Select...</option><option>0 &ndash; None</option><option>1</option><option>2</option><option>3 &ndash; Mild</option><option>4</option><option>5 &ndash; Moderate</option><option>6</option><option>7 &ndash; Significant</option><option>8</option><option>9</option><option>10 &ndash; Worst</option></select>
+        <div id="concerns-list">
+          <div class="form-grid concern-row">
+            <div class="field"><label>Concern #1</label><input type="text" class="intake-input concern-text" /></div>
+            <div class="field"><label>Severity (0&ndash;10)</label>
+              <select class="intake-input concern-sev"><option value="">Select...</option><option>0 &ndash; None</option><option>1</option><option>2</option><option>3 &ndash; Mild</option><option>4</option><option>5 &ndash; Moderate</option><option>6</option><option>7 &ndash; Significant</option><option>8</option><option>9</option><option>10 &ndash; Worst</option></select>
+            </div>
           </div>
-          <div class="field"><label for="i-c2">Concern #2</label><input type="text" id="i-c2" class="intake-input" /></div>
-          <div class="field"><label for="i-c2p">Severity (0&ndash;10)</label>
-            <select id="i-c2p" class="intake-input"><option value="">Select...</option><option>0 &ndash; None</option><option>1</option><option>2</option><option>3 &ndash; Mild</option><option>4</option><option>5 &ndash; Moderate</option><option>6</option><option>7 &ndash; Significant</option><option>8</option><option>9</option><option>10 &ndash; Worst</option></select>
-          </div>
-          <div class="field"><label for="i-c3">Concern #3</label><input type="text" id="i-c3" class="intake-input" /></div>
-          <div class="field"><label for="i-c3p">Severity (0&ndash;10)</label>
-            <select id="i-c3p" class="intake-input"><option value="">Select...</option><option>0 &ndash; None</option><option>1</option><option>2</option><option>3 &ndash; Mild</option><option>4</option><option>5 &ndash; Moderate</option><option>6</option><option>7 &ndash; Significant</option><option>8</option><option>9</option><option>10 &ndash; Worst</option></select>
-          </div>
-          <div class="field"><label for="i-c4">Concern #4</label><input type="text" id="i-c4" class="intake-input" /></div>
-          <div class="field"><label for="i-c4p">Severity (0&ndash;10)</label>
-            <select id="i-c4p" class="intake-input"><option value="">Select...</option><option>0 &ndash; None</option><option>1</option><option>2</option><option>3 &ndash; Mild</option><option>4</option><option>5 &ndash; Moderate</option><option>6</option><option>7 &ndash; Significant</option><option>8</option><option>9</option><option>10 &ndash; Worst</option></select>
-          </div>
+        </div>
+        <div class="no-print" style="margin-top:.6rem;display:flex;gap:.5rem">
+          <button type="button" onclick="addConcern()" style="cursor:pointer;font-family:inherit;font-size:.88rem;padding:.3rem .75rem;border-radius:8px;border:1px solid var(--line);background:var(--soft-mauve);color:var(--deep-plum);font-weight:600">+ Add concern</button>
+          <button type="button" onclick="removeConcern()" style="cursor:pointer;font-family:inherit;font-size:.88rem;padding:.3rem .75rem;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--muted)">− Remove last</button>
         </div>
       </div>
     </section>
@@ -291,7 +285,7 @@
             <select id="i-pregnant" class="intake-input"><option value="">Select...</option><option>Yes</option><option>No</option><option>N/A</option></select>
           </div>
           <div class="field"><label for="i-first-period">Age of first period</label>
-            <select id="i-first-period" class="intake-input"><option value="">Select...</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18+</option><option>N/A</option></select>
+            <select id="i-first-period" class="intake-input"><option value="">Select...</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18+</option><option>N/A</option></select>
           </div>
           <div class="field"><label for="i-cycle-length">Length of cycle</label>
             <select id="i-cycle-length" class="intake-input"><option value="">Select...</option><option>20 days</option><option>21 days</option><option>22 days</option><option>23 days</option><option>24 days</option><option>25 days</option><option>26 days</option><option>27 days</option><option>28 days</option><option>29 days</option><option>30 days</option><option>31 days</option><option>32 days</option><option>33 days</option><option>34 days</option><option>35+ days</option><option>Irregular</option><option>N/A</option></select>
@@ -413,6 +407,25 @@
     var today = new Date().toISOString().split('T')[0];
     document.getElementById('i-sig-date').value = today;
 
+    var concernCount = 1;
+    function addConcern() {
+      if (concernCount >= 10) return;
+      concernCount++;
+      var row = document.createElement('div');
+      row.className = 'form-grid concern-row';
+      row.style.marginTop = '.7rem';
+      row.innerHTML = '<div class="field"><label>Concern #' + concernCount + '</label><input type="text" class="intake-input concern-text" /></div>' +
+        '<div class="field"><label>Severity (0–10)</label>' +
+        '<select class="intake-input concern-sev"><option value="">Select...</option><option>0 – None</option><option>1</option><option>2</option><option>3 – Mild</option><option>4</option><option>5 – Moderate</option><option>6</option><option>7 – Significant</option><option>8</option><option>9</option><option>10 – Worst</option></select></div>';
+      document.getElementById('concerns-list').appendChild(row);
+    }
+    function removeConcern() {
+      var list = document.getElementById('concerns-list');
+      if (list.children.length <= 1) return;
+      list.removeChild(list.lastElementChild);
+      concernCount--;
+    }
+
     function calcAge() {
       var dob = document.getElementById('i-dob').value;
       var ageField = document.getElementById('i-age');
@@ -495,10 +508,14 @@
       L.push('Emergency Phone: ' + getVal('i-emergency-phone'));
       L.push('');
       L.push('PRESENT HEALTH CONCERNS');
-      L.push('Concern #1: ' + getVal('i-c1') + ' (Pain: ' + getVal('i-c1p') + ')');
-      L.push('Concern #2: ' + getVal('i-c2') + ' (Pain: ' + getVal('i-c2p') + ')');
-      L.push('Concern #3: ' + getVal('i-c3') + ' (Pain: ' + getVal('i-c3p') + ')');
-      L.push('Concern #4: ' + getVal('i-c4') + ' (Pain: ' + getVal('i-c4p') + ')');
+      var rows = document.querySelectorAll('.concern-row');
+      rows.forEach(function(row, i) {
+        var text = row.querySelector('.concern-text');
+        var sev = row.querySelector('.concern-sev');
+        var t = text ? (text.value || '').trim() : '';
+        var s = sev ? (sev.value || '').trim() : '';
+        if (t || s) L.push('Concern #' + (i + 1) + ': ' + t + ' (Severity: ' + (s || 'N/A') + ')');
+      });
       L.push('');
       L.push('HEALTH HISTORY');
       L.push('Respiratory: ' + getChecked('hh-respiratory') + (getVal('i-resp-other') ? ', ' + getVal('i-resp-other') : ''));
