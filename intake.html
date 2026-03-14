@@ -303,6 +303,12 @@
           <div class="field"><label for="i-flow">Menstrual flow</label>
             <select id="i-flow" class="intake-input"><option value="">Select...</option><option>Light</option><option>Moderate</option><option>Heavy</option><option>Very Heavy</option><option>Irregular</option><option>Absent / Amenorrhea</option><option>N/A</option></select>
           </div>
+          <div class="field"><label for="i-menopause">Menopause</label>
+            <select id="i-menopause" class="intake-input" onchange="toggleMenopauseAge()"><option value="">Select...</option><option>No</option><option>Yes</option><option>Perimenopause</option><option>N/A</option></select>
+          </div>
+          <div class="field" id="menopause-age-field" style="display:none"><label for="i-menopause-age">Approximate age menopause started</label>
+            <select id="i-menopause-age" class="intake-input"><option value="">Select...</option><option>Under 40</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option><option>46</option><option>47</option><option>48</option><option>49</option><option>50</option><option>51</option><option>52</option><option>53</option><option>54</option><option>55</option><option>56+</option><option>Unsure</option></select>
+          </div>
           <div class="field" style="grid-column:1/-1"><label>PMS symptoms (check all that apply)</label>
             <div class="checkbox-list note" id="hh-pms" style="margin-top:.3rem">
               <div style="display:inline-block;margin-right:1rem"><label><input type="checkbox" value="Cramping"> Cramping</label></div>
@@ -438,6 +444,17 @@
       ageField.value = age >= 0 ? age : '';
     }
 
+    function toggleMenopauseAge() {
+      var val = document.getElementById('i-menopause').value;
+      var field = document.getElementById('menopause-age-field');
+      if (val === 'Yes' || val === 'Perimenopause') {
+        field.style.display = '';
+      } else {
+        field.style.display = 'none';
+        document.getElementById('i-menopause-age').value = '';
+      }
+    }
+
     function toggleTreatmentAddr() {
       var cb = document.getElementById('i-diff-address');
       var field = document.getElementById('treatment-addr-field');
@@ -557,6 +574,8 @@
       L.push('Miscarriages: ' + getVal('i-miscarriages'));
       L.push('Abortions: ' + getVal('i-abortions'));
       L.push('Flow: ' + getVal('i-flow'));
+      var meno = getVal('i-menopause');
+      L.push('Menopause: ' + (meno || 'N/A') + (meno === 'Yes' || meno === 'Perimenopause' ? ' (started approx age: ' + (getVal('i-menopause-age') || 'Not provided') + ')' : ''));
       L.push('PMS symptoms: ' + getChecked('hh-pms') + (getVal('i-pms-other') ? ', ' + getVal('i-pms-other') : ''));
       L.push('');
       L.push('CONSENT');
