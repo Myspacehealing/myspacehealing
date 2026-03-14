@@ -41,12 +41,13 @@
       </button>
       <nav class="nav-links">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="services.html">Services</a>
-        <a href="acupuncture.html">What Is Acupuncture?</a>
         <a href="pricing.html">Pricing &amp; Policies</a>
-        <a href="contact.html">Contact</a>
+        <a href="estimate.html">Pricing Estimator</a>
         <a href="intake.html" style="font-weight:600;">Intake</a>
+        <a href="contact.html">Contact</a>
+        <a href="acupuncture.html">What Is Acupuncture?</a>
+        <a href="about.html">About</a>
       </nav>
     </div>
   </header>
@@ -72,8 +73,23 @@
       </div>
     </section>
 
+    <!-- Sub-navigation -->
+    <nav class="intake-subnav no-print" id="intake-subnav">
+      <div class="container">
+        <a href="#sec-personal">Personal</a>
+        <a href="#sec-concerns">Concerns</a>
+        <a href="#sec-history">History</a>
+        <a href="#sec-medical">Medical</a>
+        <a href="#sec-lifestyle">Lifestyle</a>
+        <a href="#sec-treatment">Treatment</a>
+        <a href="#sec-womens">Women's</a>
+        <a href="#sec-consent">Consent</a>
+        <a href="#sec-signature">Sign</a>
+      </div>
+    </nav>
+
     <!-- Personal Information -->
-    <section>
+    <section id="sec-personal">
       <div class="container card">
         <h2>Personal Information</h2>
         <div class="form-grid">
@@ -98,7 +114,7 @@
     </section>
 
     <!-- Present Health Concerns -->
-    <section>
+    <section id="sec-concerns">
       <div class="container card">
         <h2>Present Health Concerns</h2>
         <p class="note" style="margin-bottom:1rem">Please list your main concerns or symptoms and rate the discomfort level.</p>
@@ -116,7 +132,7 @@
     </section>
 
     <!-- Health History -->
-    <section>
+    <section id="sec-history">
       <div class="container card">
         <h2>Health History</h2>
         <p class="note" style="margin-bottom:1rem">Please check any conditions you currently have or have experienced in the past.</p>
@@ -217,7 +233,7 @@
     </section>
 
     <!-- Additional Medical Info -->
-    <section>
+    <section id="sec-medical">
       <div class="container card">
         <h2>Additional Medical Information</h2>
         <div class="field" style="margin-bottom:1rem"><label for="i-allergies">Known Allergies</label><textarea id="i-allergies" class="intake-input" rows="2"></textarea></div>
@@ -228,7 +244,7 @@
     </section>
 
     <!-- Lifestyle -->
-    <section>
+    <section id="sec-lifestyle">
       <div class="container card">
         <h2>Lifestyle</h2>
         <div class="form-grid">
@@ -254,7 +270,7 @@
     </section>
 
     <!-- Treatment Preferences -->
-    <section>
+    <section id="sec-treatment">
       <div class="container card">
         <h2>Treatment Preferences</h2>
         <div class="field" style="margin-bottom:1rem"><label for="i-avoid-areas">Areas you DO NOT wish to be worked on</label><input type="text" id="i-avoid-areas" class="intake-input" /></div>
@@ -264,59 +280,9 @@
       </div>
     </section>
 
-    <!-- Prepayment Estimate -->
-    <section>
-      <div class="container card">
-        <h2>Prepayment Estimate</h2>
-        <p class="note" style="margin-bottom:1rem">Select your planned services below to see an estimated prepayment amount. Final pricing is confirmed by Eva prior to scheduling and may vary based on travel distance and other factors. See <a href="pricing.html">Pricing &amp; Policies</a> for full details.</p>
-        <div class="form-grid">
-          <div class="field"><label for="i-visit-type">Visit type</label>
-            <select id="i-visit-type" class="intake-input" onchange="calcEstimate()">
-              <option value="">Select...</option>
-              <option value="250">Single person &mdash; $250</option>
-              <option value="350">Two-person visit &mdash; $350</option>
-            </select>
-          </div>
-          <div class="field"><label for="i-visit-time">Appointment time</label>
-            <select id="i-visit-time" class="intake-input" onchange="calcEstimate()">
-              <option value="0">Before 7:00 PM (standard)</option>
-              <option value="50">After 7:00 PM (+$50 evening fee)</option>
-            </select>
-          </div>
-        </div>
-        <p class="note" style="margin:.8rem 0 .4rem;font-weight:600">Optional add-on therapies:</p>
-        <div class="checkbox-list" id="addon-list" style="margin-bottom:1rem">
-          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Cupping &mdash; $40</label></div>
-          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Gua sha &mdash; $40</label></div>
-          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Moxibustion &mdash; $40</label></div>
-          <div><label><input type="checkbox" value="10" onchange="calcEstimate()"> Ear seeds &mdash; $10</label></div>
-        </div>
-        <div class="field" style="margin-bottom:1rem"><label for="i-bodywork">Therapeutic bodywork ($30 per 10 min, up to 60 min)</label>
-          <select id="i-bodywork" class="intake-input" onchange="calcEstimate()">
-            <option value="0">None</option>
-            <option value="30">10 min &mdash; $30</option>
-            <option value="60">20 min &mdash; $60</option>
-            <option value="90">30 min &mdash; $90</option>
-            <option value="120">40 min &mdash; $120</option>
-            <option value="150">50 min &mdash; $150</option>
-            <option value="180">60 min &mdash; $180</option>
-          </select>
-        </div>
-        <div class="field"><label>Holiday visit?</label>
-          <select id="i-holiday" class="intake-input" onchange="calcEstimate()">
-            <option value="0">No</option>
-            <option value="100">Yes (+$100 holiday fee)</option>
-          </select>
-        </div>
-        <div id="estimate-result" style="margin-top:1rem;padding:.8rem 1rem;background:var(--soft-mauve);border-radius:10px;font-size:1.05rem;display:none">
-          <strong>Estimated prepayment: <span id="estimate-total">$0</span></strong>
-          <div class="note" style="margin-top:.3rem">This is an estimate only. Final pricing may vary based on location and other factors. Eva will confirm the exact amount before your appointment.</div>
-        </div>
-      </div>
-    </section>
 
     <!-- Women's Health -->
-    <section>
+    <section id="sec-womens">
       <div class="container card">
         <h2>Women's Health (if applicable)</h2>
         <div class="form-grid">
@@ -336,7 +302,7 @@
     </section>
 
     <!-- Consent -->
-    <section>
+    <section id="sec-consent">
       <div class="container card soft">
         <h2>Consent &amp; Acknowledgements</h2>
 
@@ -377,7 +343,7 @@
     </section>
 
     <!-- Signature -->
-    <section>
+    <section id="sec-signature">
       <div class="container card">
         <h2>Patient Acknowledgement</h2>
         <p class="note" style="margin-bottom:1rem">By signing below, I acknowledge that I have read and understood the information above, had the opportunity to ask questions, and voluntarily consent to treatment.</p>
@@ -416,25 +382,6 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     var today = new Date().toISOString().split('T')[0];
     document.getElementById('i-sig-date').value = today;
-
-    function calcEstimate() {
-      var base = parseInt(document.getElementById('i-visit-type').value) || 0;
-      var evening = parseInt(document.getElementById('i-visit-time').value) || 0;
-      var holiday = parseInt(document.getElementById('i-holiday').value) || 0;
-      var addons = 0;
-      document.querySelectorAll('#addon-list input[type="checkbox"]:checked').forEach(function(cb) {
-        addons += parseInt(cb.value) || 0;
-      });
-      var bodywork = parseInt(document.getElementById('i-bodywork').value) || 0;
-      var total = base + evening + holiday + addons + bodywork;
-      var result = document.getElementById('estimate-result');
-      if (base > 0) {
-        document.getElementById('estimate-total').textContent = '$' + total;
-        result.style.display = '';
-      } else {
-        result.style.display = 'none';
-      }
-    }
 
     function toggleTreatmentAddr() {
       var cb = document.getElementById('i-same-address');
@@ -524,19 +471,6 @@
       L.push('Areas to avoid: ' + getVal('i-avoid-areas'));
       L.push('Oil/lotion: ' + getVal('i-oil'));
       L.push('');
-      L.push('PREPAYMENT ESTIMATE');
-      var visitType = document.getElementById('i-visit-type');
-      L.push('Visit type: ' + (visitType.options[visitType.selectedIndex].text || 'Not selected'));
-      L.push('Appointment time: ' + document.getElementById('i-visit-time').options[document.getElementById('i-visit-time').selectedIndex].text);
-      L.push('Holiday visit: ' + document.getElementById('i-holiday').options[document.getElementById('i-holiday').selectedIndex].text);
-      var addons = [];
-      document.querySelectorAll('#addon-list input[type="checkbox"]:checked').forEach(function(cb) { addons.push(cb.parentElement.textContent.trim()); });
-      L.push('Add-ons: ' + (addons.length ? addons.join(', ') : 'None'));
-      var bwSel = document.getElementById('i-bodywork');
-      L.push('Bodywork: ' + bwSel.options[bwSel.selectedIndex].text);
-      var estEl = document.getElementById('estimate-total');
-      L.push('Estimated total: ' + (estEl ? estEl.textContent : 'N/A'));
-      L.push('');
       L.push("WOMEN'S HEALTH");
       L.push('Pregnant: ' + getVal('i-pregnant'));
       L.push('Age of first period: ' + getVal('i-first-period'));
@@ -571,6 +505,6 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init({duration:700,once:true,offset:60});</script>
-  <script src="mobile.js"></script>
+  <script src="mobile.js?v=2"></script>
 </body>
 </html>

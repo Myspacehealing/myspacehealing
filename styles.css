@@ -33,7 +33,7 @@ header{
   position:sticky;
   top:0;
   z-index:40;
-  background:rgba(253,248,252,.94);
+  background:rgba(242,226,239,.92);
   backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line)
 }
@@ -100,6 +100,23 @@ h3{font-size:1.2rem;font-weight:600}
 .btn.primary:hover{background:#8d5b87;box-shadow:var(--shadow-hover);transform:translateY(-1px)}
 .btn.secondary{background:transparent;color:var(--deep-plum)}
 .btn.secondary:hover{background:var(--soft-mauve)}
+
+/* ── Intake sub-nav ── */
+.intake-subnav{
+  position:sticky;top:var(--header-h,60px);z-index:35;
+  background:rgba(253,248,252,.96);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:.4rem 0;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none
+}
+.intake-subnav::-webkit-scrollbar{display:none}
+.intake-subnav .container{display:flex;gap:.35rem;padding:0 1rem}
+.intake-subnav a{
+  display:inline-block;padding:.28rem .6rem;border-radius:8px;
+  font-size:.8rem;font-weight:400;color:var(--muted);
+  transition:background .2s,color .2s;text-decoration:none;flex-shrink:0
+}
+.intake-subnav a:hover,.intake-subnav a.active{background:var(--soft-mauve);color:var(--deep-plum);font-weight:600;opacity:1}
 
 /* ── Hero (Home page) ── */
 .page-hero{

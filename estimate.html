@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prepayment Estimate | In-Home Acupuncture NYC | MySpace Healing</title>
+  <meta name="description" content="Estimate your prepayment for private in-home acupuncture with Eva Huang, L.Ac. in NYC. Calculate session costs, add-on therapies, and fees." />
+  <link rel="canonical" href="https://myspacehealing.com/estimate.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Prepayment Estimate — MySpace Healing" />
+  <meta property="og:description" content="Estimate your prepayment for private in-home acupuncture with Eva Huang, L.Ac. in NYC." />
+  <meta property="og:url" content="https://myspacehealing.com/estimate.html" />
+  <meta property="og:site_name" content="MySpace Healing" />
+  <meta property="og:image" content="https://myspacehealing.com/images/logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Prepayment Estimate — MySpace Healing" />
+  <meta name="twitter:description" content="Estimate your prepayment for private in-home acupuncture with Eva Huang, L.Ac. in NYC." />
+  <meta name="twitter:image" content="https://myspacehealing.com/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" href="images/icon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="MySpace Healing logo" class="brand-orb" />
+        <span class="brand-text">
+          <span class="brand-wordmark">
+            <span class="brand-script">MySpace</span>
+            <span class="brand-healing">Healing</span>
+          </span>
+          <div class="brand-sub">Eva Huang, L.Ac.</div>
+        </span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <svg class="hamburger-icon" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="close-icon" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+      </button>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="pricing.html">Pricing &amp; Policies</a>
+        <a href="estimate.html" style="font-weight:600;">Pricing Estimator</a>
+        <a href="intake.html">Intake</a>
+        <a href="contact.html">Contact</a>
+        <a href="acupuncture.html">What Is Acupuncture?</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-transition">
+    <section class="hero-simple">
+      <div class="container">
+        <div class="banner">
+          <span class="eyebrow">Prepayment Estimate</span>
+          <h1>Get an idea of your visit cost.</h1>
+          <p class="lead">
+            Use this calculator to estimate your prepayment amount. This is for reference only &mdash; no payment is required until Eva confirms your appointment details and final pricing. See <a href="pricing.html">Pricing &amp; Policies</a> for full details.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container card" data-aos="fade-up">
+        <h2>Build your estimate</h2>
+        <div class="form-grid">
+          <div class="field"><label for="e-visit-type">Visit type</label>
+            <select id="e-visit-type" class="intake-input" onchange="calcEstimate()">
+              <option value="">Select...</option>
+              <option value="250">Single person &mdash; $250</option>
+              <option value="350">Two-person visit &mdash; $350</option>
+            </select>
+          </div>
+          <div class="field"><label for="e-visit-time">Appointment time</label>
+            <select id="e-visit-time" class="intake-input" onchange="calcEstimate()">
+              <option value="0">Before 7:00 PM (standard)</option>
+              <option value="50">After 7:00 PM (+$50 evening fee)</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="note" style="margin:1.2rem 0 .5rem;font-weight:600">Optional add-on therapies:</p>
+        <div class="checkbox-list" id="addon-list" style="margin-bottom:1rem">
+          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Cupping &mdash; $40</label></div>
+          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Gua sha &mdash; $40</label></div>
+          <div><label><input type="checkbox" value="40" onchange="calcEstimate()"> Moxibustion &mdash; $40</label></div>
+          <div><label><input type="checkbox" value="10" onchange="calcEstimate()"> Ear seeds &mdash; $10</label></div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field"><label for="e-bodywork">Therapeutic bodywork ($30 per 10 min, up to 60 min)</label>
+            <select id="e-bodywork" class="intake-input" onchange="calcEstimate()">
+              <option value="0">None</option>
+              <option value="30">10 min &mdash; $30</option>
+              <option value="60">20 min &mdash; $60</option>
+              <option value="90">30 min &mdash; $90</option>
+              <option value="120">40 min &mdash; $120</option>
+              <option value="150">50 min &mdash; $150</option>
+              <option value="180">60 min &mdash; $180</option>
+            </select>
+          </div>
+          <div class="field"><label for="e-holiday">Holiday visit?</label>
+            <select id="e-holiday" class="intake-input" onchange="calcEstimate()">
+              <option value="0">No</option>
+              <option value="100">Yes (+$100 holiday fee)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="estimate-result" style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--soft-mauve);border-radius:12px;font-size:1.1rem;display:none">
+          <strong>Estimated prepayment: <span id="estimate-total">$0</span></strong>
+          <div class="note" style="margin-top:.4rem">This is for reference only. No payment is required before confirmation with Eva. Final pricing may vary based on location and other factors.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container" data-aos="fade-up" style="text-align:center;padding:1.5rem 0">
+        <p style="margin-bottom:1rem">Ready to book? Fill out the intake form or get in touch.</p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn primary" href="contact.html">Contact Eva</a>
+          <a class="btn secondary" href="intake.html">Intake Form</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>&copy; <span id="year"></span> MySpace Healing &middot; Eva Huang, L.Ac.</div>
+      <div class="note">Private concierge acupuncture services separate from Yupo Health / Yupo Wellness.</div>
+      <button class="view-toggle">View desktop site</button>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function calcEstimate() {
+      var base = parseInt(document.getElementById('e-visit-type').value) || 0;
+      var evening = parseInt(document.getElementById('e-visit-time').value) || 0;
+      var holiday = parseInt(document.getElementById('e-holiday').value) || 0;
+      var addons = 0;
+      document.querySelectorAll('#addon-list input[type="checkbox"]:checked').forEach(function(cb) {
+        addons += parseInt(cb.value) || 0;
+      });
+      var bodywork = parseInt(document.getElementById('e-bodywork').value) || 0;
+      var total = base + evening + holiday + addons + bodywork;
+      var result = document.getElementById('estimate-result');
+      if (base > 0) {
+        document.getElementById('estimate-total').textContent = '$' + total;
+        result.style.display = '';
+      } else {
+        result.style.display = 'none';
+      }
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>AOS.init({duration:700,once:true,offset:60});</script>
+  <script src="mobile.js?v=2"></script>
+</body>
+</html>
