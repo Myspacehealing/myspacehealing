@@ -196,7 +196,7 @@ section{padding:1rem 0 3rem}
   padding:1.6rem
 }
 .hero-simple{padding:2.5rem 0 1.5rem;position:relative;background-size:cover;background-position:center;background-repeat:no-repeat}
-.hero-simple::before{content:'';position:absolute;inset:0;background:rgba(253,248,252,.45);pointer-events:none}
+.hero-simple::before{content:'';position:absolute;inset:0;background:rgba(253,248,252,.2);pointer-events:none}
 .hero-simple .container{position:relative;z-index:1}
 .hero-simple .banner{padding:1.8rem 2rem 1.6rem}
 
