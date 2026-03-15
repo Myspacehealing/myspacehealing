@@ -57,6 +57,8 @@
     }
     setHeaderHeight();
     window.addEventListener('resize', setHeaderHeight);
+    window.addEventListener('load', setHeaderHeight);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(setHeaderHeight);
 
     var links = subnav.querySelectorAll('a[href^="#"]');
 

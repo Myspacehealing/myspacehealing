@@ -75,7 +75,8 @@
         <a href="#sec-medical">Medical Info</a>
         <a href="#sec-lifestyle">Lifestyle</a>
         <a href="#sec-treatment">Treatment Preferences</a>
-        <a href="#sec-womens">Women's Health</a>
+        <a href="#sec-womens" id="subnav-womens" style="display:none">Women's Health</a>
+        <a href="#sec-mens" id="subnav-mens" style="display:none">Men's Health</a>
         <a href="#sec-consent">Consent</a>
         <a href="#sec-signature">Acknowledgement</a>
       </div>
@@ -89,8 +90,8 @@
           <div class="field"><label for="i-name" class="req">Full Name</label><input type="text" id="i-name" class="intake-input" /></div>
           <div class="field"><label for="i-dob" class="req">Date of Birth</label><input type="date" id="i-dob" class="intake-input" onchange="calcAge()" /></div>
           <div class="field"><label for="i-age">Age</label><input type="text" id="i-age" class="intake-input" readonly style="color:var(--muted)" /></div>
-          <div class="field"><label for="i-sex">Sex</label>
-            <select id="i-sex" class="intake-input"><option value="">Select...</option><option>Male</option><option>Female</option><option>Other</option></select>
+          <div class="field"><label for="i-sex">Sex assigned at birth</label>
+            <select id="i-sex" class="intake-input" onchange="toggleHealthSections()"><option value="">Select...</option><option>Male</option><option>Female</option><option>Intersex</option><option>Prefer not to say</option></select>
           </div>
           <div class="field"><label for="i-height">Height</label><input type="text" id="i-height" class="intake-input" /></div>
           <div class="field"><label for="i-weight">Weight</label><input type="text" id="i-weight" class="intake-input" /></div>
@@ -98,7 +99,7 @@
           <div class="field"><label for="i-email" class="req">Email Address</label><input type="email" id="i-email" class="intake-input" /></div>
           <div class="field" style="grid-column:1/-1"><label for="i-address" class="req">Home Address</label><input type="text" id="i-address" class="intake-input" /></div>
           <div style="grid-column:1/-1;margin:.1rem 0"><label style="display:flex;align-items:center;gap:.5rem;cursor:pointer;font-size:.9rem;color:var(--text)"><input type="checkbox" id="i-diff-address" onchange="toggleTreatmentAddr()" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" /> Treatment address is different from home address</label></div>
-          <div class="field" id="treatment-addr-field" style="grid-column:1/-1;display:none"><label for="i-treatment-address">Treatment Address</label><input type="text" id="i-treatment-address" class="intake-input" /></div>
+          <div class="field" id="treatment-addr-field" style="grid-column:1/-1;display:none"><label for="i-treatment-address" class="req">Treatment Address</label><input type="text" id="i-treatment-address" class="intake-input" /></div>
           <div class="field"><label for="i-occupation">Occupation</label><input type="text" id="i-occupation" class="intake-input" /></div>
           <div class="field"><label for="i-emergency-name" class="req">Emergency Contact Name</label><input type="text" id="i-emergency-name" class="intake-input" /></div>
           <div class="field" style="grid-column:1/-1"><label for="i-emergency-phone" class="req">Emergency Contact Phone</label><input type="tel" id="i-emergency-phone" class="intake-input" /></div>
@@ -130,107 +131,107 @@
     <section id="sec-history">
       <div class="container card">
         <h2>Health History</h2>
-        <p class="note" style="margin-bottom:1rem">Please check any conditions you currently have or have experienced in the past.</p>
-        <div data-aos="fade-up" class="grid-2">
-          <div>
-            <h3>Respiratory</h3>
-            <div class="checkbox-list note" id="hh-respiratory">
+        <div class="field" style="margin-bottom:1.2rem">
+          <label for="i-hh-freetext">Please list any health conditions you currently have or have experienced in the past</label>
+          <textarea id="i-hh-freetext" class="intake-input" rows="3" placeholder="e.g. diabetes, high blood pressure, asthma, knee surgery in 2019..."></textarea>
+        </div>
+        <p class="note" style="margin-bottom:.8rem;color:var(--muted)">Or browse by category below to make sure you haven&rsquo;t missed anything:</p>
+        <div data-aos="fade-up" class="hh-accordions">
+          <div class="hh-acc">
+            <button type="button" class="hh-acc-btn" onclick="toggleAcc(this)">Respiratory <span class="hh-acc-arrow">&#9654;</span></button>
+            <div class="hh-acc-body checkbox-list note" id="hh-respiratory">
               <div><label><input type="checkbox" value="Pneumonia"> Pneumonia</label></div>
               <div><label><input type="checkbox" value="Bronchitis"> Bronchitis</label></div>
               <div><label><input type="checkbox" value="Asthma"> Asthma</label></div>
               <div><label><input type="checkbox" value="Sinusitis"> Sinusitis</label></div>
-              <div><label><input type="checkbox" onchange="toggleOther('i-resp-other')"> Other</label></div>
-              <div id="i-resp-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-resp-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
-            <h3 style="margin-top:1rem">Digestive</h3>
-            <div class="checkbox-list note" id="hh-digestive">
+          </div>
+          <div class="hh-acc">
+            <button type="button" class="hh-acc-btn" onclick="toggleAcc(this)">Digestive <span class="hh-acc-arrow">&#9654;</span></button>
+            <div class="hh-acc-body checkbox-list note" id="hh-digestive">
               <div><label><input type="checkbox" value="Gastritis"> Gastritis</label></div>
               <div><label><input type="checkbox" value="Peptic Ulcer"> Peptic Ulcer</label></div>
               <div><label><input type="checkbox" value="Colitis"> Colitis</label></div>
               <div><label><input type="checkbox" value="Constipation"> Constipation</label></div>
               <div><label><input type="checkbox" value="Diarrhea"> Diarrhea</label></div>
-              <div><label><input type="checkbox" onchange="toggleOther('i-dig-other')"> Other</label></div>
-              <div id="i-dig-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-dig-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
-            <h3 style="margin-top:1rem">Cardiovascular</h3>
-            <div class="checkbox-list note" id="hh-cardio">
+          </div>
+          <div class="hh-acc">
+            <button type="button" class="hh-acc-btn" onclick="toggleAcc(this)">Cardiovascular <span class="hh-acc-arrow">&#9654;</span></button>
+            <div class="hh-acc-body checkbox-list note" id="hh-cardio">
               <div><label><input type="checkbox" value="Coronary Heart Disease"> Coronary Heart Disease</label></div>
               <div><label><input type="checkbox" value="Arrhythmia"> Arrhythmia</label></div>
               <div><label><input type="checkbox" value="Hypertension"> Hypertension</label></div>
               <div><label><input type="checkbox" value="Stroke"> Stroke</label></div>
-              <div><label><input type="checkbox" onchange="toggleOther('i-cardio-other')"> Other</label></div>
-              <div id="i-cardio-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-cardio-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
-            <h3 style="margin-top:1rem">Urogenital</h3>
-            <div class="checkbox-list note" id="hh-urogenital">
+          </div>
+          <div class="hh-acc">
+            <button type="button" class="hh-acc-btn" onclick="toggleAcc(this)">Urogenital <span class="hh-acc-arrow">&#9654;</span></button>
+            <div class="hh-acc-body checkbox-list note" id="hh-urogenital">
               <div><label><input type="checkbox" value="UTI"> UTI</label></div>
               <div><label><input type="checkbox" value="Kidney Stones"> Kidney Stones</label></div>
               <div><label><input type="checkbox" value="Incontinence"> Incontinence</label></div>
               <div><label><input type="checkbox" value="Infertility"> Infertility</label></div>
               <div><label><input type="checkbox" value="Prostatitis"> Prostatitis</label></div>
               <div><label><input type="checkbox" value="STDs"> STDs</label></div>
-              <div><label><input type="checkbox" onchange="toggleOther('i-uro-other')"> Other</label></div>
-              <div id="i-uro-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-uro-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
-            <h3 style="margin-top:1rem">Skin</h3>
-            <div class="checkbox-list note" id="hh-skin">
+          </div>
+          <div class="hh-acc">
+            <button type="button" class="hh-acc-btn" onclick="toggleAcc(this)">Skin <span class="hh-acc-arrow">&#9654;</span></button>
+            <div class="hh-acc-body checkbox-list note" id="hh-skin">
               <div><label><input type="checkbox" value="Rashes"> Rashes</label></div>
               <div><label><input type="checkbox" value="Itching"> Itching</label></div>
               <div><label><input type="checkbox" value="Eczema"> Eczema</label></div>
               <div><label><input type="checkbox" value="Acne"> Acne</label></div>
               <div><label><input type="checkbox" value="Psoriasis"> Psoriasis</label></div>
-              <div><label><input type="checkbox" onchange="toggleOther('i-skin-other')"> Other</label></div>
-              <div id="i-skin-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-skin-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
           </div>
-          <div>
-            <h3>Musculoskeletal</h3>
-            <div class="checkbox-list note" id="hh-musculo">
+          <div class="hh-acc">
+            <button type="button" class="hh-acc-btn" onclick="toggleAcc(this)">Musculoskeletal <span class="hh-acc-arrow">&#9654;</span></button>
+            <div class="hh-acc-body checkbox-list note" id="hh-musculo">
               <div><label><input type="checkbox" value="Low Back Pain"> Low Back Pain</label></div>
               <div><label><input type="checkbox" value="Joint Pain"> Joint Pain</label></div>
               <div><label><input type="checkbox" value="Limited Range of Motion"> Limited Range of Motion</label></div>
               <div><label><input type="checkbox" value="Tendonitis"> Tendonitis</label></div>
               <div><label><input type="checkbox" value="Arthritis"> Arthritis</label></div>
               <div><label><input type="checkbox" value="Fractures"> Fractures</label></div>
-              <div><label><input type="checkbox" onchange="toggleOther('i-musc-other')"> Other</label></div>
-              <div id="i-musc-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-musc-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
-            <h3 style="margin-top:1rem">Neurological</h3>
-            <div class="checkbox-list note" id="hh-neuro">
+          </div>
+          <div class="hh-acc">
+            <button type="button" class="hh-acc-btn" onclick="toggleAcc(this)">Neurological <span class="hh-acc-arrow">&#9654;</span></button>
+            <div class="hh-acc-body checkbox-list note" id="hh-neuro">
               <div><label><input type="checkbox" value="Fainting"> Fainting</label></div>
               <div><label><input type="checkbox" value="Seizures"> Seizures</label></div>
               <div><label><input type="checkbox" value="Memory Loss"> Memory Loss</label></div>
               <div><label><input type="checkbox" value="Tremor"> Tremor</label></div>
               <div><label><input type="checkbox" value="Paralysis"> Paralysis</label></div>
               <div><label><input type="checkbox" value="Nerve Pain"> Nerve Pain</label></div>
-              <div><label><input type="checkbox" onchange="toggleOther('i-neuro-other')"> Other</label></div>
-              <div id="i-neuro-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-neuro-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
-            <h3 style="margin-top:1rem">Endocrine</h3>
-            <div class="checkbox-list note" id="hh-endocrine">
+          </div>
+          <div class="hh-acc">
+            <button type="button" class="hh-acc-btn" onclick="toggleAcc(this)">Endocrine <span class="hh-acc-arrow">&#9654;</span></button>
+            <div class="hh-acc-body checkbox-list note" id="hh-endocrine">
               <div><label><input type="checkbox" value="Thyroid Disorder"> Thyroid Disorder</label></div>
               <div><label><input type="checkbox" value="Diabetes"> Diabetes</label></div>
               <div><label><input type="checkbox" value="Excessive Sweating"> Excessive Sweating</label></div>
               <div><label><input type="checkbox" value="Temperature Sensitivity"> Temperature Sensitivity</label></div>
-              <div><label><input type="checkbox" onchange="toggleOther('i-endo-other')"> Other</label></div>
-              <div id="i-endo-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-endo-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
-            <h3 style="margin-top:1rem">Immunological</h3>
-            <div class="checkbox-list note" id="hh-immuno">
+          </div>
+          <div class="hh-acc">
+            <button type="button" class="hh-acc-btn" onclick="toggleAcc(this)">Immunological <span class="hh-acc-arrow">&#9654;</span></button>
+            <div class="hh-acc-body checkbox-list note" id="hh-immuno">
               <div><label><input type="checkbox" value="Cancer / Tumor"> Cancer / Tumor</label></div>
               <div><label><input type="checkbox" value="Chronic Fatigue Syndrome"> Chronic Fatigue Syndrome</label></div>
               <div><label><input type="checkbox" value="Autoimmune Disease"> Autoimmune Disease</label></div>
               <div><label><input type="checkbox" value="HIV/AIDS"> HIV/AIDS</label></div>
-              <div><label><input type="checkbox" onchange="toggleOther('i-immuno-other')"> Other</label></div>
-              <div id="i-immuno-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-immuno-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
-            <h3 style="margin-top:1rem">Psychological</h3>
-            <div class="checkbox-list note" id="hh-psych">
+          </div>
+          <div class="hh-acc">
+            <button type="button" class="hh-acc-btn" onclick="toggleAcc(this)">Psychological <span class="hh-acc-arrow">&#9654;</span></button>
+            <div class="hh-acc-body checkbox-list note" id="hh-psych">
               <div><label><input type="checkbox" value="Depression"> Depression</label></div>
               <div><label><input type="checkbox" value="Anxiety"> Anxiety</label></div>
               <div><label><input type="checkbox" value="Addiction"> Addiction</label></div>
-              <div><label><input type="checkbox" onchange="toggleOther('i-psych-other')"> Other</label></div>
-              <div id="i-psych-other-wrap" style="display:none;margin-top:.3rem"><textarea id="i-psych-other" class="intake-input" rows="2" placeholder="Please describe..."></textarea></div>
             </div>
           </div>
         </div>
@@ -286,10 +287,19 @@
     </section>
 
 
+    <!-- Manual health section toggles -->
+    <section class="no-print" id="health-section-toggles" style="display:none">
+      <div class="container" style="text-align:center;padding:.5rem 0">
+        <p class="note" style="margin-bottom:.4rem;color:var(--muted)">Need to complete an additional health section?</p>
+        <button type="button" onclick="manualShowSection('womens')" id="toggle-womens" style="font-size:.88rem;color:var(--deep-plum);font-weight:600;margin-right:1.2rem;background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit">+ Show Women&rsquo;s Health</button>
+        <button type="button" onclick="manualShowSection('mens')" id="toggle-mens" style="font-size:.88rem;color:var(--deep-plum);font-weight:600;background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit">+ Show Men&rsquo;s Health</button>
+      </div>
+    </section>
+
     <!-- Women's Health -->
-    <section id="sec-womens">
+    <section id="sec-womens" style="display:none">
       <div class="container card">
-        <h2>Women's Health (if applicable)</h2>
+        <h2>Women's Health</h2>
         <div class="form-grid">
           <div class="field"><label for="i-pregnant">Are you pregnant?</label>
             <select id="i-pregnant" class="intake-input"><option value="">Select...</option><option>Yes</option><option>No</option><option>N/A</option></select>
@@ -342,6 +352,42 @@
       </div>
     </section>
 
+    <!-- Men's Health -->
+    <section id="sec-mens" style="display:none">
+      <div class="container card">
+        <h2>Men's Health</h2>
+        <div class="form-grid">
+          <div class="field"><label for="i-erectile">Erectile function</label>
+            <select id="i-erectile" class="intake-input"><option value="">Select...</option><option>Normal</option><option>Occasional difficulty</option><option>Frequent difficulty</option><option>Unable</option><option>N/A</option></select>
+          </div>
+          <div class="field"><label for="i-premature">Premature ejaculation</label>
+            <select id="i-premature" class="intake-input"><option value="">Select...</option><option>No</option><option>Occasionally</option><option>Frequently</option><option>N/A</option></select>
+          </div>
+          <div class="field"><label for="i-libido-m">Libido (sex drive)</label>
+            <select id="i-libido-m" class="intake-input"><option value="">Select...</option><option>Normal</option><option>Low</option><option>Very Low</option><option>N/A</option></select>
+          </div>
+          <div class="field"><label for="i-prostate">Prostate issues</label>
+            <select id="i-prostate" class="intake-input"><option value="">Select...</option><option>None</option><option>Enlarged prostate (BPH)</option><option>Prostatitis</option><option>Prostate cancer</option><option>Other</option><option>N/A</option></select>
+          </div>
+          <div class="field"><label for="i-urinary-m">Urinary symptoms</label>
+            <select id="i-urinary-m" class="intake-input"><option value="">Select...</option><option>None</option><option>Frequent urination</option><option>Difficulty starting</option><option>Weak stream</option><option>Nighttime urination</option><option>N/A</option></select>
+          </div>
+          <div class="field"><label for="i-testicular">Testicular pain or swelling</label>
+            <select id="i-testicular" class="intake-input"><option value="">Select...</option><option>No</option><option>Yes — current</option><option>Yes — past</option><option>N/A</option></select>
+          </div>
+          <div class="field"><label for="i-fertility-m">Fertility concerns</label>
+            <select id="i-fertility-m" class="intake-input"><option value="">Select...</option><option>No</option><option>Yes — currently trying to conceive</option><option>Yes — diagnosed infertility</option><option>N/A</option></select>
+          </div>
+          <div class="field"><label for="i-hair-loss">Hair loss</label>
+            <select id="i-hair-loss" class="intake-input"><option value="">Select...</option><option>No</option><option>Mild thinning</option><option>Moderate</option><option>Significant</option><option>N/A</option></select>
+          </div>
+          <div class="field" style="grid-column:1/-1"><label for="i-mens-other">Other men&rsquo;s health concerns</label>
+            <textarea id="i-mens-other" class="intake-input" rows="2" placeholder="Any other concerns related to men's health..."></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Consent -->
     <section id="sec-consent">
       <div class="container card soft">
@@ -362,23 +408,34 @@
         <p class="note">I understand that my personal health information will be kept confidential and used only for treatment, scheduling, and necessary healthcare administrative purposes in accordance with applicable privacy and confidentiality regulations.</p>
         <div style="margin:.8rem 0"><label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.95rem;color:var(--text)"><input type="checkbox" id="i-consent-privacy" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" /> I agree to the Privacy &amp; Confidentiality terms above <span style="color:#c0392b;font-weight:700">*</span></label></div>
 
-        <h3 style="margin-top:1.5rem">Consent for Electronic Communication</h3>
-        <p class="note">I consent to communication regarding appointments and treatment via:</p>
-        <div class="checkbox-list note" style="margin-bottom:.5rem">
-          <div><label><input type="checkbox" id="i-comm-email" value="Email"> Email</label></div>
-          <div><label><input type="checkbox" id="i-comm-sms" value="Text Message (SMS)"> Text Message (SMS)</label></div>
+        <h3 style="margin-top:1.5rem">Electronic Communication Consent</h3>
+        <p class="note">I authorize MySpace Healing / Eva Huang, L.Ac. to communicate with me regarding scheduling, intake forms, treatment coordination, and general administrative matters via electronic communication, including email and/or text message.</p>
+        <p class="note">I understand that electronic communications may not be completely secure and that there is a small risk of unauthorized access. By providing my contact information and selecting my preferences below, I consent to these communications.</p>
+        <p class="note">I understand that sensitive medical discussions may require phone or in-person communication when appropriate.</p>
+        <div style="margin:.8rem 0"><label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.95rem;color:var(--text)"><input type="checkbox" id="i-consent-comm" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" /> I agree to the Electronic Communication Consent above <span style="color:#c0392b;font-weight:700">*</span></label></div>
+        <div class="field" style="margin-top:.6rem;max-width:300px"><label for="i-comm-pref">Preferred communication method</label>
+          <select id="i-comm-pref" class="intake-input"><option value="Both">Email &amp; Text</option><option value="Email">Email only</option><option value="Text">Text only</option></select>
         </div>
-        <p class="note">I understand that electronic communications may not always be fully secure and I accept the potential risk of unauthorized access.</p>
 
         <h3 style="margin-top:1.5rem">Appointment &amp; Cancellation Policy</h3>
         <p class="note">I understand that appointments require at least 24 hours notice for cancellation or rescheduling. Late cancellations or missed appointments may result in fees according to the policies stated on the MySpace Healing website.</p>
         <div style="margin:.8rem 0"><label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.95rem;color:var(--text)"><input type="checkbox" id="i-consent-cancel" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" /> I agree to the Appointment &amp; Cancellation Policy above <span style="color:#c0392b;font-weight:700">*</span></label></div>
 
-        <h3 style="margin-top:1.5rem">Guardian Consent for Minors</h3>
-        <p class="note">If the patient is under the age of 18, a parent or legal guardian must provide consent for treatment.</p>
-        <div class="form-grid" style="margin-top:.5rem">
-          <div class="field"><label for="i-guardian-name">Guardian Name (if applicable)</label><input type="text" id="i-guardian-name" class="intake-input" /></div>
-          <div class="field"><label for="i-guardian-relationship">Relationship to Patient</label><input type="text" id="i-guardian-relationship" class="intake-input" /></div>
+        <h3 style="margin-top:1.5rem">Guardian Consent</h3>
+        <p class="note" id="guardian-auto-msg" style="display:none;color:#c0392b;font-weight:600">The patient is under 18 &mdash; a parent or legal guardian must complete this section.</p>
+        <div id="guardian-manual-toggle" style="margin:.6rem 0"><label style="display:flex;align-items:center;gap:.5rem;cursor:pointer;font-size:.9rem;color:var(--text)"><input type="checkbox" id="i-has-guardian" onchange="toggleGuardian()" style="width:1.1rem;height:1.1rem;accent-color:var(--deep-plum)" /> Patient has a parent or legal guardian completing this form</label></div>
+        <div id="guardian-fields" style="display:none">
+          <p class="note">As the parent or legal guardian of the patient named above, I authorize treatment and confirm that I have read and agree to all consent terms in this form on behalf of the patient.</p>
+          <div class="form-grid" style="margin-top:.5rem">
+            <div class="field"><label for="i-guardian-name" class="req">Guardian Full Name</label><input type="text" id="i-guardian-name" class="intake-input" /></div>
+            <div class="field"><label for="i-guardian-relationship" class="req">Relationship to Patient</label>
+              <select id="i-guardian-relationship" class="intake-input"><option value="">Select...</option><option>Parent</option><option>Legal Guardian</option><option>Other</option></select>
+            </div>
+            <div class="field"><label for="i-guardian-phone">Guardian Phone</label><input type="tel" id="i-guardian-phone" class="intake-input" /></div>
+            <div class="field"><label for="i-guardian-email">Guardian Email</label><input type="email" id="i-guardian-email" class="intake-input" /></div>
+            <div class="field" style="grid-column:1/-1"><label for="i-guardian-sig" class="req">Guardian Signature &mdash; type your full legal name</label><input type="text" id="i-guardian-sig" class="intake-input" placeholder="Type your full legal name" /></div>
+            <div class="field"><label for="i-guardian-sig-date" class="req">Date</label><input type="date" id="i-guardian-sig-date" class="intake-input" /></div>
+          </div>
         </div>
       </div>
     </section>
@@ -443,16 +500,91 @@
       concernCount--;
     }
 
+    var womensManual = false, mensManual = false;
+    function toggleHealthSections() {
+      var sex = document.getElementById('i-sex').value;
+      var womens = document.getElementById('sec-womens');
+      var mens = document.getElementById('sec-mens');
+      var subW = document.getElementById('subnav-womens');
+      var subM = document.getElementById('subnav-mens');
+      var toggles = document.getElementById('health-section-toggles');
+      var tW = document.getElementById('toggle-womens');
+      var tM = document.getElementById('toggle-mens');
+
+      // Auto-show based on sex
+      var showWomens = sex === 'Female' || sex === 'Intersex' || womensManual;
+      var showMens = sex === 'Male' || sex === 'Intersex' || mensManual;
+
+      womens.style.display = showWomens ? '' : 'none';
+      mens.style.display = showMens ? '' : 'none';
+      subW.style.display = showWomens ? '' : 'none';
+      subM.style.display = showMens ? '' : 'none';
+
+      // Show manual toggle links for the opposite section(s)
+      var showToggles = false;
+      if (!showWomens) { tW.style.display = ''; showToggles = true; } else { tW.style.display = 'none'; }
+      if (!showMens) { tM.style.display = ''; showToggles = true; } else { tM.style.display = 'none'; }
+      toggles.style.display = (sex && showToggles) ? '' : 'none';
+    }
+
+    function manualShowSection(which) {
+      if (which === 'womens') womensManual = true;
+      if (which === 'mens') mensManual = true;
+      toggleHealthSections();
+    }
+
     function calcAge() {
       var dob = document.getElementById('i-dob').value;
       var ageField = document.getElementById('i-age');
-      if (!dob) { ageField.value = ''; return; }
+      if (!dob) { ageField.value = ''; updateGuardianForAge(null); return; }
       var birth = new Date(dob + 'T00:00:00');
       var today = new Date();
       var age = today.getFullYear() - birth.getFullYear();
       var m = today.getMonth() - birth.getMonth();
       if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
       ageField.value = age >= 0 ? age : '';
+      updateGuardianForAge(age >= 0 ? age : null);
+    }
+
+    var guardianAutoShown = false;
+    function updateGuardianForAge(age) {
+      var autoMsg = document.getElementById('guardian-auto-msg');
+      var manualToggle = document.getElementById('guardian-manual-toggle');
+      var fields = document.getElementById('guardian-fields');
+      var cb = document.getElementById('i-has-guardian');
+      if (age !== null && age < 18) {
+        guardianAutoShown = true;
+        autoMsg.style.display = '';
+        manualToggle.style.display = 'none';
+        fields.style.display = '';
+        cb.checked = true;
+        var gDate = document.getElementById('i-guardian-sig-date');
+        if (!gDate.value) gDate.value = new Date().toISOString().split('T')[0];
+      } else {
+        guardianAutoShown = false;
+        autoMsg.style.display = 'none';
+        manualToggle.style.display = '';
+        if (!cb.checked) {
+          fields.style.display = 'none';
+        }
+      }
+    }
+
+    function toggleAcc(btn) {
+      var acc = btn.parentElement;
+      acc.classList.toggle('open');
+    }
+
+    function toggleGuardian() {
+      var cb = document.getElementById('i-has-guardian');
+      var fields = document.getElementById('guardian-fields');
+      if (cb.checked) {
+        fields.style.display = '';
+        var gDate = document.getElementById('i-guardian-sig-date');
+        if (!gDate.value) gDate.value = new Date().toISOString().split('T')[0];
+      } else {
+        fields.style.display = 'none';
+      }
     }
 
     function toggleMenopauseAge() {
@@ -489,6 +621,29 @@
       }
     }
 
+    // ── Format validators ──
+    function isValidPhone(v) {
+      var digits = v.replace(/\D/g, '');
+      return digits.length >= 7 && digits.length <= 15;
+    }
+    function isValidEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    }
+    function isValidAddress(v) {
+      // Must contain at least one digit (street number) and at least 2 words
+      var words = v.trim().split(/\s+/);
+      return words.length >= 2 && /\d/.test(v) && !/^[^a-zA-Z0-9\s]*$/.test(v);
+    }
+    function isValidDate(v) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) return false;
+      var d = new Date(v + 'T00:00:00');
+      return !isNaN(d.getTime()) && d.getFullYear() >= 1900 && d.getFullYear() <= new Date().getFullYear();
+    }
+    function isValidName(v) {
+      // At least 2 characters, mostly letters/spaces/hyphens, not all same char
+      return v.length >= 2 && /^[a-zA-Z\s\-'.]+$/.test(v) && !/^(.)\1+$/.test(v.replace(/\s/g,''));
+    }
+
     function getVal(id) {
       var el = document.getElementById(id);
       if (!el) return '';
@@ -507,22 +662,53 @@
     function emailIntake() {
       // Validate required fields
       var missing = [];
+      var invalid = [];
       var name = getVal('i-name');
       if (!name) missing.push('Full Name');
+      else if (!isValidName(name)) invalid.push('Full Name — please enter a valid name');
       if (!getVal('i-dob')) missing.push('Date of Birth');
+      else if (!isValidDate(getVal('i-dob'))) invalid.push('Date of Birth — please enter a valid date');
       if (!getVal('i-phone')) missing.push('Phone Number');
+      else if (!isValidPhone(getVal('i-phone'))) invalid.push('Phone Number — please enter a valid phone number');
       if (!getVal('i-email')) missing.push('Email Address');
+      else if (!isValidEmail(getVal('i-email'))) invalid.push('Email Address — please enter a valid email');
       if (!getVal('i-address')) missing.push('Home Address');
+      else if (!isValidAddress(getVal('i-address'))) invalid.push('Home Address — please enter a valid street address');
+      if (document.getElementById('i-diff-address').checked) {
+        if (!getVal('i-treatment-address')) missing.push('Treatment Address');
+        else if (!isValidAddress(getVal('i-treatment-address'))) invalid.push('Treatment Address — please enter a valid street address');
+      }
       if (!getVal('i-emergency-name')) missing.push('Emergency Contact Name');
+      else if (!isValidName(getVal('i-emergency-name'))) invalid.push('Emergency Contact Name — please enter a valid name');
       if (!getVal('i-emergency-phone')) missing.push('Emergency Contact Phone');
+      else if (!isValidPhone(getVal('i-emergency-phone'))) invalid.push('Emergency Contact Phone — please enter a valid phone number');
       if (!document.getElementById('i-consent-medical').checked) missing.push('Medical Consent');
       if (!document.getElementById('i-consent-health').checked) missing.push('Health Info Disclosure');
       if (!document.getElementById('i-consent-privacy').checked) missing.push('Privacy & Confidentiality');
+      if (!document.getElementById('i-consent-comm').checked) missing.push('Electronic Communication Consent');
       if (!document.getElementById('i-consent-cancel').checked) missing.push('Cancellation Policy');
       if (!getVal('i-sig-name')) missing.push('Patient Signature Name');
+      else if (!isValidName(getVal('i-sig-name'))) invalid.push('Patient Signature Name — please enter a valid name');
       if (!getVal('i-sig')) missing.push('Signature');
-      if (missing.length > 0) {
-        alert('Please complete these required fields before sending:\n\n• ' + missing.join('\n• '));
+      else if (!isValidName(getVal('i-sig'))) invalid.push('Signature — please type your full legal name');
+      // Guardian validation when section is visible
+      var guardianVisible = document.getElementById('guardian-fields').style.display !== 'none';
+      if (guardianVisible) {
+        if (!getVal('i-guardian-name')) missing.push('Guardian Full Name');
+        else if (!isValidName(getVal('i-guardian-name'))) invalid.push('Guardian Full Name — please enter a valid name');
+        if (!getVal('i-guardian-relationship')) missing.push('Guardian Relationship');
+        if (!getVal('i-guardian-sig')) missing.push('Guardian Signature');
+        else if (!isValidName(getVal('i-guardian-sig'))) invalid.push('Guardian Signature — please type your full legal name');
+        if (!getVal('i-guardian-sig-date')) missing.push('Guardian Signature Date');
+        else if (!isValidDate(getVal('i-guardian-sig-date'))) invalid.push('Guardian Signature Date — please enter a valid date');
+        if (getVal('i-guardian-phone') && !isValidPhone(getVal('i-guardian-phone'))) invalid.push('Guardian Phone — please enter a valid phone number');
+        if (getVal('i-guardian-email') && !isValidEmail(getVal('i-guardian-email'))) invalid.push('Guardian Email — please enter a valid email');
+      }
+      var msgs = [];
+      if (missing.length > 0) msgs.push('Missing required fields:\n• ' + missing.join('\n• '));
+      if (invalid.length > 0) msgs.push('Please fix the following:\n• ' + invalid.join('\n• '));
+      if (msgs.length > 0) {
+        alert(msgs.join('\n\n'));
         return;
       }
 
@@ -535,7 +721,7 @@
       L.push('Full Name: ' + name);
       L.push('Date of Birth: ' + getVal('i-dob'));
       L.push('Age: ' + getVal('i-age'));
-      L.push('Sex: ' + getVal('i-sex'));
+      L.push('Sex assigned at birth: ' + getVal('i-sex'));
       L.push('Height: ' + getVal('i-height'));
       L.push('Weight: ' + getVal('i-weight'));
       L.push('Phone: ' + getVal('i-phone'));
@@ -558,16 +744,17 @@
       });
       L.push('');
       L.push('HEALTH HISTORY');
-      L.push('Respiratory: ' + getChecked('hh-respiratory') + (getVal('i-resp-other') ? ', ' + getVal('i-resp-other') : ''));
-      L.push('Digestive: ' + getChecked('hh-digestive') + (getVal('i-dig-other') ? ', ' + getVal('i-dig-other') : ''));
-      L.push('Cardiovascular: ' + getChecked('hh-cardio') + (getVal('i-cardio-other') ? ', ' + getVal('i-cardio-other') : ''));
-      L.push('Urogenital: ' + getChecked('hh-urogenital') + (getVal('i-uro-other') ? ', ' + getVal('i-uro-other') : ''));
-      L.push('Musculoskeletal: ' + getChecked('hh-musculo') + (getVal('i-musc-other') ? ', ' + getVal('i-musc-other') : ''));
-      L.push('Neurological: ' + getChecked('hh-neuro') + (getVal('i-neuro-other') ? ', ' + getVal('i-neuro-other') : ''));
-      L.push('Endocrine: ' + getChecked('hh-endocrine') + (getVal('i-endo-other') ? ', ' + getVal('i-endo-other') : ''));
-      L.push('Immunological: ' + getChecked('hh-immuno') + (getVal('i-immuno-other') ? ', ' + getVal('i-immuno-other') : ''));
-      L.push('Skin: ' + getChecked('hh-skin') + (getVal('i-skin-other') ? ', ' + getVal('i-skin-other') : ''));
-      L.push('Psychological: ' + getChecked('hh-psych') + (getVal('i-psych-other') ? ', ' + getVal('i-psych-other') : ''));
+      var hhFree = getVal('i-hh-freetext');
+      if (hhFree) L.push('Patient description: ' + hhFree);
+      var cats = [
+        ['Respiratory','hh-respiratory'],['Digestive','hh-digestive'],['Cardiovascular','hh-cardio'],
+        ['Urogenital','hh-urogenital'],['Skin','hh-skin'],['Musculoskeletal','hh-musculo'],
+        ['Neurological','hh-neuro'],['Endocrine','hh-endocrine'],['Immunological','hh-immuno'],['Psychological','hh-psych']
+      ];
+      cats.forEach(function(c) {
+        var checked = getChecked(c[1]);
+        if (checked !== 'None') L.push(c[0] + ': ' + checked);
+      });
       L.push('');
       L.push('ADDITIONAL MEDICAL INFORMATION');
       L.push('Allergies: ' + getVal('i-allergies'));
@@ -588,28 +775,52 @@
       L.push('Areas to avoid: ' + getVal('i-avoid-areas'));
       L.push('Oil/lotion: ' + getVal('i-oil'));
       L.push('');
-      L.push("WOMEN'S HEALTH");
-      L.push('Pregnant: ' + getVal('i-pregnant'));
-      L.push('Age of first period: ' + getVal('i-first-period'));
-      L.push('Cycle length: ' + getVal('i-cycle-length'));
-      L.push('Last period: ' + getVal('i-last-period'));
-      L.push('Live births: ' + getVal('i-live-births'));
-      L.push('Miscarriages: ' + getVal('i-miscarriages'));
-      L.push('Abortions: ' + getVal('i-abortions'));
-      L.push('Flow: ' + getVal('i-flow'));
-      var meno = getVal('i-menopause');
-      L.push('Menopause: ' + (meno || 'N/A') + (meno === 'Yes' || meno === 'Perimenopause' ? ' (started approx age: ' + (getVal('i-menopause-age') || 'Not provided') + ')' : ''));
-      L.push('PMS symptoms: ' + getChecked('hh-pms') + (getVal('i-pms-other') ? ', ' + getVal('i-pms-other') : ''));
-      L.push('');
+      if (document.getElementById('sec-womens').style.display !== 'none') {
+        L.push("WOMEN'S HEALTH");
+        L.push('Pregnant: ' + getVal('i-pregnant'));
+        L.push('Age of first period: ' + getVal('i-first-period'));
+        L.push('Cycle length: ' + getVal('i-cycle-length'));
+        L.push('Last period: ' + getVal('i-last-period'));
+        L.push('Live births: ' + getVal('i-live-births'));
+        L.push('Miscarriages: ' + getVal('i-miscarriages'));
+        L.push('Abortions: ' + getVal('i-abortions'));
+        L.push('Flow: ' + getVal('i-flow'));
+        var meno = getVal('i-menopause');
+        L.push('Menopause: ' + (meno || 'N/A') + (meno === 'Yes' || meno === 'Perimenopause' ? ' (started approx age: ' + (getVal('i-menopause-age') || 'Not provided') + ')' : ''));
+        L.push('PMS symptoms: ' + getChecked('hh-pms') + (getVal('i-pms-other') ? ', ' + getVal('i-pms-other') : ''));
+        L.push('');
+      }
+      if (document.getElementById('sec-mens').style.display !== 'none') {
+        L.push("MEN'S HEALTH");
+        L.push('Erectile function: ' + getVal('i-erectile'));
+        L.push('Premature ejaculation: ' + getVal('i-premature'));
+        L.push('Libido: ' + getVal('i-libido-m'));
+        L.push('Prostate issues: ' + getVal('i-prostate'));
+        L.push('Urinary symptoms: ' + getVal('i-urinary-m'));
+        L.push('Testicular pain/swelling: ' + getVal('i-testicular'));
+        L.push('Fertility concerns: ' + getVal('i-fertility-m'));
+        L.push('Hair loss: ' + getVal('i-hair-loss'));
+        var mensOther = getVal('i-mens-other');
+        if (mensOther) L.push('Other concerns: ' + mensOther);
+        L.push('');
+      }
       L.push('CONSENT');
       L.push('Medical Consent: ' + getVal('i-consent-medical'));
       L.push('Health Info Disclosure: ' + getVal('i-consent-health'));
       L.push('Privacy: ' + getVal('i-consent-privacy'));
-      L.push('Electronic Comm - Email: ' + (document.getElementById('i-comm-email').checked ? 'Yes' : 'No'));
-      L.push('Electronic Comm - SMS: ' + (document.getElementById('i-comm-sms').checked ? 'Yes' : 'No'));
+      L.push('Electronic Communication Consent: ' + getVal('i-consent-comm'));
+      L.push('Preferred Communication Method: ' + getVal('i-comm-pref'));
       L.push('Cancellation Policy: ' + getVal('i-consent-cancel'));
-      L.push('Guardian Name: ' + getVal('i-guardian-name'));
-      L.push('Guardian Relationship: ' + getVal('i-guardian-relationship'));
+      if (guardianVisible) {
+        L.push('');
+        L.push('GUARDIAN CONSENT');
+        L.push('Guardian Name: ' + getVal('i-guardian-name'));
+        L.push('Relationship: ' + getVal('i-guardian-relationship'));
+        L.push('Guardian Phone: ' + getVal('i-guardian-phone'));
+        L.push('Guardian Email: ' + getVal('i-guardian-email'));
+        L.push('Guardian Signature: ' + getVal('i-guardian-sig'));
+        L.push('Guardian Signature Date: ' + getVal('i-guardian-sig-date'));
+      }
       L.push('');
       L.push('PATIENT ACKNOWLEDGEMENT');
       L.push('Patient Name: ' + getVal('i-sig-name'));
