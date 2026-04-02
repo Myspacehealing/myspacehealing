@@ -21,7 +21,8 @@ body{
   font-weight:400;
   color:var(--text);
   background:linear-gradient(180deg,#fdf8fc 0%,#fffefe 100%);
-  line-height:1.75
+  line-height:1.75;
+  font-size:1.05rem
 }
 img{max-width:100%;display:block}
 a{color:var(--deep-plum);text-decoration:none;transition:opacity .2s}
@@ -60,8 +61,8 @@ header{
 h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;margin:0 0 1rem;line-height:1.15;font-weight:500;color:var(--text)}
 h1{font-size:clamp(1.8rem,3vw,2.6rem);max-width:36ch}
 h2{font-size:clamp(1.7rem,2.8vw,2.4rem)}
-h3{font-size:1.2rem;font-weight:600}
-.lead{font-size:1.05rem;color:var(--text);max-width:62ch;line-height:1.8}
+h3{font-size:1.35rem;font-weight:600}
+.lead{font-size:1.15rem;color:var(--text);max-width:62ch;line-height:1.8}
 .eyebrow,.badge{
   display:inline-block;
   padding:.38rem .75rem;
@@ -185,7 +186,7 @@ section{padding:1rem 0 3rem}
   padding-left:1rem;
   margin-top:1rem
 }
-.note{font-size:.9rem;color:var(--muted)}
+.note{font-size:.95rem;color:var(--muted)}
 
 /* ── Banner ── */
 .banner{
@@ -346,8 +347,8 @@ select.intake-input{cursor:pointer}
   /* Typography */
   h1{font-size:1.75rem;max-width:none}
   h2{font-size:1.4rem}
-  h3{font-size:1.05rem}
-  .lead{font-size:.95rem;line-height:1.7}
+  h3{font-size:1.15rem}
+  .lead{font-size:1.05rem;line-height:1.7}
 
   /* Sections */
   section{padding:.6rem 0 1.8rem}
@@ -408,6 +409,21 @@ select.intake-input{cursor:pointer}
 .hh-acc-body{display:none;padding:.5rem .9rem .6rem}
 .hh-acc.open .hh-acc-body{display:block}
 @media(max-width:640px){.hh-accordions{grid-template-columns:1fr}}
+
+/* ── Card Icons ── */
+.card-icon{
+  display:block;
+  width:38px;height:38px;
+  margin-bottom:.6rem;
+  color:var(--mauve);
+  font-size:1.65rem;
+  line-height:38px;
+  text-align:center
+}
+.card-icon i{display:block}
+@media(max-width:640px){
+  .card-icon{width:32px;height:32px;font-size:1.4rem;line-height:32px;margin-bottom:.45rem}
+}
 
 /* ── Eva headshot ── */
 .eva-photo{display:block;width:100%;max-width:340px;margin:0 auto 1.5rem;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.1);object-fit:cover}
